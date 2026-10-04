@@ -1,0 +1,5 @@
+Drop animated GIFs here for live wallpapers (awww).
+
+  Super+Shift+T  live GIFs + static stills (~/.config/wallpapers)
+
+The first frame is used for the Super+Shift+T thumbnail, the lock screen, and the color theme. The GIF itself is what awww plays.

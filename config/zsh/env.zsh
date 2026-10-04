@@ -1,1 +1,1 @@
-export PATH="$HOME/eww/target/release:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

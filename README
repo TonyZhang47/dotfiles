@@ -1,1 +1,69 @@
-Backup of ping's configs
+# apple
+
+Backup of ping's Hyprland rice (configs only). Last refresh is in `BACKUP_TIME`.
+
+## Layout
+
+| Path | Goes to |
+| --- | --- |
+| `config/` | `~/.config/` |
+| `home/` | `~/` (dotfiles) |
+| `local-bin/` | `~/.local/bin/` |
+| `local-share/fonts/` | `~/.local/share/fonts/` (Comfortaa for the lock screen) |
+
+Copy those over, then `fc-cache -f` and log into Hyprland. `~/.local/bin` must be on `PATH`.
+
+## Install packages
+
+Chaotic-AUR is already used on this machine. If you do not have it, add it first or swap the chaotic lines for `yay -S`.
+
+### pacman (extra / official)
+
+```
+sudo pacman -S --needed \
+  hyprland hypridle hyprlock hyprsunset hyprpolkitagent \
+  xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
+  kitty ghostty \
+  rofi nemo mako \
+  playerctl brightnessctl grim slurp wl-clipboard \
+  pipewire pipewire-pulse wireplumber pavucontrol \
+  cava gtk4 gtk4-layer-shell gjs dart-sass \
+  gobject-introspection npm python \
+  inotify-tools imagemagick \
+  ttf-iosevka-nerd ttf-jetbrains-mono-nerd \
+  bibata-cursor-theme noto-fonts \
+  networkmanager bluez bluez-utils \
+  starship fastfetch neovim \
+  eza fzf zoxide yazi
+```
+
+### yay / chaotic-aur
+
+AGS, wallpaper, theme, and the apps the binds launch:
+
+```
+yay -S --needed \
+  aylurs-gtk-shell libastal-git libastal-4-git \
+  awww matugen \
+  firefox-developer-edition spotify
+```
+
+If chaotic-aur is already enabled, the same names work with `pacman -S`:
+
+```
+sudo pacman -S --needed \
+  aylurs-gtk-shell libastal-git libastal-4-git \
+  awww matugen \
+  firefox-developer-edition spotify
+```
+
+`libastal-meta` is optional. This rice polls scripts instead of the extra Astal services.
+
+## After install
+
+1. `chmod +x ~/.local/bin/ags ~/.local/bin/hyprsunset ~/.config/ags/scripts/* ~/.config/hypr/scripts/*`
+2. `systemctl --user enable --now wallpaper-watch.service hyprsunset.service`
+3. Comfortaa is in `local-share/fonts`. Install those or `yay -S ttf-google-fonts-git` if you want it from a package.
+4. Super+C control center, Super+H settings, Super+Shift+T wallpapers. Notifications stay with mako.
+
+`local-bin/ags` is a wrapper. System `ags` from `aylurs-gtk-shell` is enough if `/usr/bin/ags` exists; the wrapper is there for a prefix install under `~/.local/opt/ags`.

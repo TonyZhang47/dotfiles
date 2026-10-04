@@ -1,4 +1,5 @@
 connect.mdns_devices="[]"
 connect.dial_devices="[]"
 audio.play_bitrate_non_metered_migrated=true
-app.player.volume=27224
+app.browser.zoom-level=100
+app.player.volume=18321

@@ -1,7 +1,7 @@
 font=Iosevka Nerd Font 13
-background-color=#11100dEE
-text-color=#b4ae84FF
-border-color=#9d9873FF
+background-color=#272736EE
+text-color=#ead4c8FF
+border-color=#cebbb3FF
 border-size=2
 border-radius=14
 padding=16
@@ -19,13 +19,13 @@ markup=1
 format=<b>%s</b>\n%b
 max-visible=4
 sort=-time
-progress-color=over #9d9873FF
+progress-color=over #cebbb3FF
 group-by=app-name
 
 [urgency=low]
-border-color=#403d2fFF
+border-color=#5e5860FF
 default-timeout=4000
 
 [urgency=high]
-border-color=#261914FF
+border-color=#d1c3beFF
 default-timeout=0

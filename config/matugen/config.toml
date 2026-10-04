@@ -1,15 +1,10 @@
 [config]
 
-[templates.eww]
-input_path = '~/.config/matugen/templates/eww-colors.scss'
-# Written live: eww rebuilds its windows when this changes, which is what recolors
-# the bar and the control center. The wallpaper picker is a separate instance so it
-# is not affected (see ~/.config/eww-wallpaper).
-output_path = '~/.config/eww/colors.scss'
-
-#[templates.ags]
-#input_path = '~/.config/matugen/templates/ags-colors.scss'
-#output_path = '~/ags/colors.scss'
+[templates.ags]
+input_path = '~/.config/matugen/templates/ags-colors.scss'
+# Rewriting this file is enough: AGS watches colors.scss and reapplies CSS
+# without rebuilding the windows, so the wallpaper list keeps its scroll.
+output_path = '~/.config/ags/colors.scss'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'

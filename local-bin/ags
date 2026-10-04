@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# User-prefix AGS (extracted from chaotic-aur).
+set -euo pipefail
+PREFIX="${AGS_PREFIX:-$HOME/.local/opt/ags}"
+BIN="$PREFIX/usr/bin/ags"
+SASS="$PREFIX/usr/bin/sass"
+
+if [ ! -x "$BIN" ]; then
+    echo "ags is not installed at $BIN" >&2
+    exit 1
+fi
+
+export PATH="$PREFIX/usr/bin:$HOME/.local/bin:$PATH"
+export LD_LIBRARY_PATH="$PREFIX/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export GI_TYPELIB_PATH="$PREFIX/usr/lib/girepository-1.0:$PREFIX/usr/lib/gjs/girepository-1.0:/usr/lib/girepository-1.0${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+export XDG_DATA_DIRS="$PREFIX/usr/share:${XDG_DATA_DIRS:-/usr/share}"
+# AGS preloads this for Gtk4 layer-shell; point at the extracted copy.
+if [ -e "$PREFIX/usr/lib/libgtk4-layer-shell.so" ]; then
+    export LD_PRELOAD="$PREFIX/usr/lib/libgtk4-layer-shell.so${LD_PRELOAD:+:$LD_PRELOAD}"
+fi
+
+if [ "${1:-}" = run ] && [ -x "$SASS" ] && [ -f "$HOME/.config/ags/style.scss" ]; then
+    "$SASS" "$HOME/.config/ags/style.scss" "$HOME/.config/ags/style.css" >/dev/null
+fi
+
+exec "$BIN" "$@"

@@ -17,9 +17,17 @@
 -- See https://wiki.hypr.land/configuring/core/monitors/
 hl.monitor({
     output   = "",
-    mode     = "preferred",
+    mode     = "2880x1800@120",
     position = "auto",
     scale    = "1.5",
+})
+
+-- XWayland apps (Spotify, Discord) ignore the monitor scale and come up
+-- the wrong size. Render them at 1x and let Hyprland scale the window.
+hl.config({
+    xwayland = {
+        force_zero_scaling = true,
+    },
 })
 
 
@@ -43,6 +51,8 @@ local runner = "rofi -show run"
 ---- AUTOSTART ----
 -------------------
 
+
+
 -- See https://wiki.hypr.land/configuring/core/autostart/
 
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
@@ -54,22 +64,20 @@ hl.on("hyprland.start", function ()
 
 --wallpaper
 hl.exec_cmd("awww-daemon > /dev/null 2>&1 &")
-hl.exec_cmd("/home/ping/.config/eww/scripts/restore-wallpaper.sh")
--- Eww draws the control-center overlay (hidden until SUPER + C).
--- The wallpaper picker runs as a second instance so recoloring these windows
--- cannot reset its scroll position.
-hl.exec_cmd("/home/ping/.local/bin/eww daemon")
-hl.exec_cmd("/home/ping/.local/bin/eww -c /home/ping/.config/eww-wallpaper daemon")
+hl.exec_cmd("/home/ping/.config/ags/scripts/restore-wallpaper.sh")
+-- AGS draws the control-center, settings, and wallpaper picker overlays.
+hl.exec_cmd("pgrep -f '/.local/bin/ags run' >/dev/null || setsid -f /home/ping/.local/bin/ags run /home/ping/.config/ags/app.tsx >/dev/null 2>&1")
 
 hl.exec_cmd("playerctld daemon")
-hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 20")
+hl.exec_cmd("setsid -f /home/ping/.config/hypr/scripts/set-cursor.sh >/dev/null 2>&1")
 hl.exec_cmd("systemctl --user start hyprpolkitagent")
 hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE DISPLAY XDG_RUNTIME_DIR")
 hl.exec_cmd("systemctl --user start hyprsunset.service")
-hl.exec_cmd("setsid -f /home/ping/.config/eww/scripts/restore-warm-light.sh >/dev/null 2>&1")
+hl.exec_cmd("setsid -f /home/ping/.config/ags/scripts/restore-warm-light.sh >/dev/null 2>&1")
 
 hl.exec_cmd("pidof hypridle || setsid -f hypridle -c /home/ping/.config/hypr/hypridle.conf >/dev/null 2>&1")
-hl.exec_cmd("pgrep -f '/eww/scripts/watch-wallpapers.sh' >/dev/null || setsid -f /home/ping/.config/eww/scripts/watch-wallpapers.sh >/dev/null 2>&1")
+hl.exec_cmd("pgrep -f '/ags/scripts/watch-wallpapers.sh' >/dev/null || setsid -f /home/ping/.config/ags/scripts/watch-wallpapers.sh >/dev/null 2>&1")
+hl.exec_cmd("pgrep -f '/hypr/scripts/clip-history.py watch' >/dev/null || setsid -f /home/ping/.config/hypr/scripts/clip-history.py watch >/dev/null 2>&1")
 end)
 
 
@@ -79,7 +87,9 @@ end)
 
 -- See https://wiki.hypr.land/configuring/core/environment-variables/
 
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_SIZE", "20")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("HYPRCURSOR_SIZE", "20")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
@@ -184,7 +194,7 @@ hl.curve("easeOut", { type = "bezier", points = { {0.22, 1.0}, {0.36, 1.0} } })
 hl.curve("easeInOut", { type = "bezier", points = { {0.45, 0.0}, {0.35, 1.0} } })
 
 hl.animation({ leaf = "global",      enabled = true, speed = 8, bezier = "default" })
--- The bar and the eww panels slide from the edge they are anchored
+-- Overlay panels slide from the edge they are anchored
 -- to. Slow enough to read, and the exit is slower than the entrance.
 hl.animation({ leaf = "layersIn",    enabled = true, speed = 4.5, bezier = "easeOut",   style = "slide" })
 hl.animation({ leaf = "layersOut",   enabled = true, speed = 5.5, bezier = "easeInOut", style = "slide" })
@@ -313,8 +323,8 @@ hl.bind(mainMod .. " + comma", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + apostrophe", hl.dsp.window.close())
 
 --Screenshot
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/screenshot-bind.sh clip"))
-hl.bind(secondMod .. " + S", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/screenshot-bind.sh save"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/screenshot-bind.sh clip"))
+hl.bind(secondMod .. " + S", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/screenshot-bind.sh save"))
 hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd(notion))
 
 --hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("supergfxctl -m Integrated"))
@@ -332,17 +342,17 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 --hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
--- Wallpaper picker. Choosing one also rebuilds the theme.
-hl.bind("SUPER + G", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/toggle-wallpaper.sh"))
-
--- Same keys as before; the picker now lives with the rest of the eww scripts.
-hl.bind("SUPER + SHIFT+ T", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/theme-picker.sh"))
+-- Wallpaper picker: live GIFs plus static stills.
+hl.bind("SUPER + SHIFT+ T", hl.dsp.exec_cmd("/home/ping/.local/bin/ags toggle wallpaper"))
 
 -- Show or hide the right-side control center.
-hl.bind("SUPER + C", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/toggle-control-center.sh"))
+hl.bind("SUPER + C", hl.dsp.exec_cmd("/home/ping/.local/bin/ags toggle control-center"))
 
 -- Settings popup (cursor, gaps, rounding). Values persist outside this file.
-hl.bind("SUPER + H", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/toggle-settings.sh"))
+hl.bind("SUPER + H", hl.dsp.exec_cmd("/home/ping/.local/bin/ags toggle settings"))
+
+-- Clipboard history. Super+V is still focus-down.
+hl.bind("SUPER + CTRL + V", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/clip-history.py pick"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + M",  hl.dsp.focus({ direction = "left" }))
@@ -378,7 +388,7 @@ hl.bind(mainMod .. " + N",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Lock the session
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/lock.sh"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/lock.sh"))
 
 -- Alt+Tab swaps the two most recent apps on this workspace.
 -- Super+Tab lists every window here so you can jump to any of them.
@@ -394,18 +404,18 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(secondMod .. " + mouse:272", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/volume-key.sh up"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/volume-key.sh down"), { locked = true, repeating = true })
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/volume-key.sh mute"), { locked = true })
-hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/mic-key.sh"), { locked = true })
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/brightness-key.sh up"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/brightness-key.sh down"), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/volume-key.sh up"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/volume-key.sh down"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/volume-key.sh mute"), { locked = true })
+hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/mic-key.sh"), { locked = true })
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/brightness-key.sh up"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/brightness-key.sh down"), { locked = true, repeating = true })
 
 -- Requires playerctl
-hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/media-key.sh next"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/media-key.sh toggle"), { locked = true })
-hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/media-key.sh toggle"), { locked = true })
-hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/media-key.sh prev"), { locked = true })
+hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/media-key.sh next"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/media-key.sh toggle"), { locked = true })
+hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/media-key.sh toggle"), { locked = true })
+hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/media-key.sh prev"), { locked = true })
 
 
 --------------------------------
@@ -525,6 +535,7 @@ hl.window_rule({
 
     no_focus = true,
 })
+
 
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({

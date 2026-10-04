@@ -1,0 +1,12 @@
+[Unit]
+Description=Build wallpaper previews when files appear
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/ping/.config/ags/scripts/watch-wallpapers.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

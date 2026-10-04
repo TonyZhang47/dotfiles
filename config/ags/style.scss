@@ -1,0 +1,483 @@
+@import "colors.scss";
+
+* {
+  all: unset;
+  font-family: "Iosevka Nerd Font";
+  font-weight: bold;
+}
+
+window {
+  background-color: transparent;
+}
+
+box.dash-card,
+box.controls,
+box.music-widget,
+box.resources,
+box.calendar-container,
+box.settings-panel,
+box.window {
+  background-color: $background;
+  color: $foreground;
+  opacity: 1;
+}
+
+.icon-btn {
+  padding: 0;
+  margin: 0;
+}
+
+.icon-glyph {
+  font-family: "Iosevka Nerd Font Propo", "Iosevka NFP";
+  padding: 0;
+  margin: 0;
+}
+
+.dash-power-btn .icon-glyph {
+  font-size: 20px;
+}
+
+.control-center {
+  background-color: transparent;
+  padding: 0;
+}
+
+.dash-card {
+  background-color: $background;
+  color: $foreground;
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.dash-clock,
+.dash-weather,
+.dash-power {
+  min-height: 148px;
+}
+
+.dash-weather {
+  min-width: 210px;
+}
+
+.dash-clock-time {
+  font-size: 32px;
+  color: $color7;
+  font-weight: 700;
+}
+
+.dash-clock-day {
+  font-size: 14px;
+  color: $color5;
+  margin-top: 2px;
+}
+
+.dash-clock-date {
+  font-size: 12px;
+  color: $color3;
+}
+
+.dash-uptime-inline {
+  margin-top: 8px;
+}
+
+.dash-uptime-icon {
+  font-size: 28px;
+  color: $color6;
+}
+
+.dash-uptime-h {
+  font-size: 14px;
+  color: $color6;
+}
+
+.dash-power {
+  min-width: 132px;
+  padding: 10px;
+}
+
+.dash-power-btn {
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  margin: 0;
+  border-radius: 14px;
+  background-color: mix($background, $color3, 70%);
+  color: $color7;
+}
+
+.dash-power-lock { color: $color7; }
+.dash-power-sleep { color: $color6; }
+.dash-power-reboot { color: $color5; }
+.dash-power-off { color: $color7; }
+
+.dash-power-btn:hover {
+  background-color: mix($background, $color4, 55%);
+}
+
+.dash-weather-icon {
+  font-size: 34px;
+}
+
+.dash-weather-temp {
+  font-size: 30px;
+  color: $color6;
+  font-weight: 700;
+}
+
+.dash-weather-city {
+  font-size: 13px;
+  color: $color6;
+  margin-top: 4px;
+}
+
+.dash-weather-text {
+  font-size: 13px;
+  color: $color5;
+}
+
+.dash-weather-c {
+  font-size: 11px;
+  color: $color3;
+  margin-top: 2px;
+}
+
+.dash-workspaces {
+  padding: 8px 10px;
+}
+
+.dash-ws {
+  min-width: 28px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 8px;
+  color: $color3;
+  background-color: transparent;
+}
+
+.dash-ws.empty {
+  color: mix($color3, $background, 55%);
+}
+
+.dash-ws.occupied {
+  color: $color5;
+}
+
+.dash-ws:hover {
+  color: $color6;
+  background-color: mix($background, $color1, 70%);
+}
+
+.dash-ws.active {
+  background-color: $color7;
+  color: $color0;
+  font-weight: 700;
+}
+
+.dash-folder {
+  padding: 3px 4px;
+  border-radius: 6px;
+  color: $color5;
+  font-size: 13px;
+}
+
+.dash-folder:hover {
+  color: $color7;
+  background-color: mix($background, $color1, 80%);
+}
+
+.dash-mid-col {
+  min-height: 156px;
+}
+
+.controls {
+  background-color: $background;
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+.slider-row {
+  min-height: 32px;
+}
+
+.slider-icon {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  color: $color6;
+  background-color: mix($background, $color1, 88%);
+}
+
+.slider-icon:hover {
+  background-color: mix($background, $color1, 70%);
+}
+
+.slider-bar trough,
+.brightness-control-bar trough,
+.volume-control-bar trough,
+.settings-scale trough,
+.musicbar-widget trough {
+  background-color: mix($background, $foreground, 78%);
+  border-radius: 6px;
+  min-height: 8px;
+  min-width: 80px;
+  margin: 0;
+}
+
+.slider-bar highlight,
+.brightness-control-bar highlight,
+.volume-control-bar highlight,
+.settings-scale highlight,
+.musicbar-widget highlight {
+  min-height: 8px;
+  background-color: mix($color5, $foreground, 90%);
+  border-radius: 6px;
+}
+
+.musicbar-widget trough {
+  margin: 4px 0 6px 0;
+}
+
+.musicbar-widget highlight {
+  background-color: mix($color6, $foreground, 90%);
+}
+
+.quick-tile {
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  color: $color6;
+  background-color: mix($background, $color1, 88%);
+}
+
+.quick-tile-on {
+  background-color: mix($background, $color5, 70%);
+}
+
+.quick-tile:hover {
+  background-color: mix($background, $color1, 70%);
+}
+
+.music-widget {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background-color: $background;
+  color: $foreground;
+}
+
+.music-title {
+  font-size: 14px;
+  color: $color7;
+}
+
+.artist-widget {
+  font-size: 12px;
+  color: $color3;
+  min-height: 14px;
+}
+
+.song-cover-art-widget {
+  background-size: cover;
+  background-position: center;
+  background-color: mix($background, $color1, 82%);
+  min-height: 72px;
+  min-width: 72px;
+  margin: 0 14px 0 0;
+  border-radius: 12px;
+}
+
+.song-cover-glyph {
+  font-size: 22px;
+  color: $color5;
+}
+
+.prev-widget,
+.pause-widget,
+.next-widget {
+  font-size: 14px;
+  min-width: 24px;
+  min-height: 22px;
+  padding: 0;
+  color: $color6;
+}
+
+.prev-widget:hover,
+.pause-widget:hover,
+.next-widget:hover {
+  color: $color7;
+}
+
+.resources {
+  background-color: $background;
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+.meter {
+  min-height: 18px;
+}
+
+.meter-name {
+  min-width: 48px;
+  font-size: 12px;
+  color: $color3;
+}
+
+.meter-val {
+  min-width: 40px;
+  font-size: 12px;
+  color: $color6;
+}
+
+.meter-bar {
+  min-height: 8px;
+  padding: 0;
+  margin: 0;
+}
+
+.meter-bar trough {
+  min-height: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 6px;
+  background-color: mix($background, $foreground, 70%);
+}
+
+.meter-bar progress {
+  min-height: 8px;
+  margin: 0;
+  border-radius: 6px;
+}
+
+.meter-CPU progress {
+  background-color: mix($color4, $foreground, 100%);
+}
+
+.meter-TEMP progress {
+  background-color: mix($color7, $foreground, 100%);
+}
+
+.meter-MEM progress {
+  background-color: mix($color6, $foreground, 90%);
+}
+
+.meter-DSK progress {
+  background-color: mix($color3, $foreground, 85%);
+}
+
+.meter-BAT progress {
+  background-color: mix($color5, $foreground, 100%);
+}
+
+.calendar-container {
+  padding: 12px;
+  border-radius: 14px;
+  background-color: $background;
+  color: $foreground;
+}
+
+.calendar-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: $color6;
+}
+
+.weekdays label {
+  color: $color3;
+}
+
+.calendar-grid .day {
+  min-width: 22px;
+  margin: 2px;
+}
+
+.calendar-grid .today {
+  color: $background;
+  background-color: $color2;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.settings-panel {
+  background-color: $background;
+  color: $foreground;
+  border-radius: 16px;
+  padding: 18px 20px 16px 20px;
+}
+
+.settings-title {
+  font-size: 20px;
+  color: $color7;
+}
+
+.settings-hint {
+  font-size: 11px;
+  color: $color3;
+  margin-bottom: 4px;
+}
+
+.settings-name {
+  font-size: 13px;
+  color: $color5;
+}
+
+.settings-value {
+  font-size: 13px;
+  color: $color6;
+}
+
+.settings-scale trough {
+  min-width: 280px;
+  margin: 4px 0;
+}
+
+.settings-toggle {
+  background-color: mix($background, $color1, 85%);
+  color: $color6;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.settings-toggle:hover {
+  background-color: mix($background, $color1, 70%);
+  color: $color7;
+}
+
+.window {
+  background-color: $background;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.image-list-preview {
+  padding: 4px;
+  margin: 4px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+}
+
+.wp-section-head {
+  padding: 8px 8px 2px 8px;
+}
+
+.wp-section-title {
+  font-size: 13px;
+  color: $color6;
+}
+
+.image-container {
+  padding: 0;
+  margin: 0;
+  border-radius: 8px;
+}
+
+.image-container:hover {
+  background-color: mix($background, $color1, 70%);
+}

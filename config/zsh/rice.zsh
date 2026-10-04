@@ -1,5 +1,4 @@
-# Eww Path
-export PATH="/eww/target/release:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # fzf
 eval "$(fzf --zsh)"
