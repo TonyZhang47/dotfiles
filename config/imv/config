@@ -1,0 +1,7 @@
+[options]
+background = 282828
+overlay_text_color = c3bebe
+overlay_text_alpha = ee
+overlay_background_color = 282828
+overlay_background_alpha = cc
+overlay_font = Iosevka Nerd Font:11

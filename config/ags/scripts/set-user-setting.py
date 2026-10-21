@@ -56,7 +56,8 @@ def write_lua(data):
 def apply(data):
     s = float(data["sensitivity"])
     scroll = float(data["scroll_factor"])
-    gi = int(data["gaps_in"])
+    # Visible gap. Hyprland inserts this value on each side of a split.
+    gi = int(data["gaps_in"]) // 2
     go = int(data["gaps_out"])
     rnd = int(data["rounding"])
     op = float(data["inactive_opacity"])
@@ -65,7 +66,7 @@ def apply(data):
     eval_lua(f"hl.config({{ input = {{ sensitivity = {s} }} }})")
     eval_lua(f"hl.config({{ input = {{ accel_profile = {json.dumps(accel)} }} }})")
     eval_lua(f"hl.config({{ input = {{ touchpad = {{ scroll_factor = {scroll} }} }} }})")
-    eval_lua(f"hl.config({{ general = {{ gaps_in = {gi}, gaps_out = {go} }} }})")
+    eval_lua(f"hl.config({{ general = {{ gaps_in = {gi}, gaps_out = {go}, float_gaps = {go} }} }})")
     eval_lua(f"hl.config({{ decoration = {{ rounding = {rnd}, inactive_opacity = {op} }} }})")
     eval_lua(f"hl.config({{ animations = {{ enabled = {anim} }} }})")
 

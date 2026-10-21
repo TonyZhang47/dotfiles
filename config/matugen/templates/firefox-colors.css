@@ -1,0 +1,9 @@
+:root {
+  --rice-bg: {{base16.base00.default.hex}};
+  --rice-bg-2: {{base16.base01.default.hex}};
+  --rice-bg-3: {{base16.base02.default.hex}};
+  --rice-muted: {{base16.base04.default.hex}};
+  --rice-fg: {{base16.base07.default.hex}};
+  --rice-accent: {{base16.base06.default.hex}};
+  --rice-border: {{base16.base03.default.hex}};
+}

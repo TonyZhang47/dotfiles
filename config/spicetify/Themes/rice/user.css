@@ -1,0 +1,13 @@
+:root {
+  --font-family: "Iosevka Nerd Font", "Iosevka NF", sans-serif !important;
+}
+
+.main-rootlist-rootlistDivider,
+.os-scrollbar {
+  display: none;
+}
+
+.main-entityHeader-backgroundColor,
+.main-actionBarBackground-background {
+  background-color: transparent !important;
+}

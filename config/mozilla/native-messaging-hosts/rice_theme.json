@@ -1,0 +1,9 @@
+{
+  "name": "rice_theme",
+  "description": "Apply the wallpaper palette to Firefox",
+  "path": "/home/ping/.config/ags/scripts/firefox-theme-host.py",
+  "type": "stdio",
+  "allowed_extensions": [
+    "rice-theme@local"
+  ]
+}

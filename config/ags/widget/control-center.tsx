@@ -1,4 +1,4 @@
-import { Astal, Gtk } from "ags/gtk4"
+import { Astal, Gdk, Gtk } from "ags/gtk4"
 import { With } from "ags"
 import app from "ags/gtk4/app"
 import { IconBtn } from "./icon"
@@ -28,8 +28,8 @@ const clock = jsonPoll<Clock>(
 const uptime = jsonPoll<Uptime>({ hours: 0, mins: 0 }, 15000, `"${SCRIPTS}/panel-uptime.sh"`)
 const weather = jsonPoll<Weather>(
     { icon: "☁", temp: "--", temp_c: "--", text: "", city: "Baltimore" },
-    300000,
-    `"${SCRIPTS}/panel-weather.py"`,
+    60000,
+    `python3 "${SCRIPTS}/panel-weather.py"`,
 )
 const workspaces = follow(JSON.stringify(EMPTY_WORKSPACES), `"${SCRIPTS}/bar-workspaces.py"`)
 const volume = numPoll(
@@ -110,8 +110,18 @@ export function ControlCenter() {
             visible={false}
             exclusivity={Astal.Exclusivity.IGNORE}
             layer={Astal.Layer.OVERLAY}
-            keymode={Astal.Keymode.NONE}
+            keymode={Astal.Keymode.EXCLUSIVE}
             anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
+            $={(self) => {
+                const keys = new Gtk.EventControllerKey()
+                keys.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
+                keys.connect("key-pressed", (_ctrl, keyval) => {
+                    if (keyval !== Gdk.KEY_Escape) return false
+                    self.visible = false
+                    return true
+                })
+                self.add_controller(keys)
+            }}
             marginTop={12}
             marginRight={12}
             widthRequest={720}

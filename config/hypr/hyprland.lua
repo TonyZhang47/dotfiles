@@ -39,7 +39,7 @@ hl.config({
 local terminal    = "kitty"
 local fileManager = "nemo"
 local browser = "firefox-developer-edition"
-local music = "spotify"
+local music = "/home/ping/.local/bin/spotify"
 local notion = "firefox-developer-edition https://calendar.notion.so/"
 
 local launcher        = "rofi -show drun -show-icons"
@@ -66,7 +66,7 @@ hl.on("hyprland.start", function ()
 hl.exec_cmd("awww-daemon > /dev/null 2>&1 &")
 hl.exec_cmd("/home/ping/.config/ags/scripts/restore-wallpaper.sh")
 -- AGS draws the control-center, settings, and wallpaper picker overlays.
-hl.exec_cmd("pgrep -f '/.local/bin/ags run' >/dev/null || setsid -f /home/ping/.local/bin/ags run /home/ping/.config/ags/app.tsx >/dev/null 2>&1")
+hl.exec_cmd("setsid -f /home/ping/.config/ags/scripts/ensure-ags.sh >/dev/null 2>&1")
 
 hl.exec_cmd("playerctld daemon")
 hl.exec_cmd("setsid -f /home/ping/.config/hypr/scripts/set-cursor.sh >/dev/null 2>&1")
@@ -75,7 +75,7 @@ hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY HYPRLAND_INSTAN
 hl.exec_cmd("systemctl --user start hyprsunset.service")
 hl.exec_cmd("setsid -f /home/ping/.config/ags/scripts/restore-warm-light.sh >/dev/null 2>&1")
 
-hl.exec_cmd("pidof hypridle || setsid -f hypridle -c /home/ping/.config/hypr/hypridle.conf >/dev/null 2>&1")
+hl.exec_cmd("/home/ping/.config/ags/scripts/on-power-source.sh")
 hl.exec_cmd("pgrep -f '/ags/scripts/watch-wallpapers.sh' >/dev/null || setsid -f /home/ping/.config/ags/scripts/watch-wallpapers.sh >/dev/null 2>&1")
 hl.exec_cmd("pgrep -f '/hypr/scripts/clip-history.py watch' >/dev/null || setsid -f /home/ping/.config/hypr/scripts/clip-history.py watch >/dev/null 2>&1")
 end)
@@ -92,6 +92,7 @@ hl.env("XCURSOR_SIZE", "20")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("HYPRCURSOR_SIZE", "20")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("PATH", "/home/ping/.local/bin:" .. (os.getenv("PATH") or "/usr/bin"))
 
 -----------------------
 ----- PERMISSIONS -----
@@ -122,7 +123,7 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 local user = {
     sensitivity = 0.5,
     scroll_factor = 0.2,
-    gaps_in = 8,
+    gaps_in = 18,
     gaps_out = 18,
     rounding = 14,
     inactive_opacity = 0.9,
@@ -144,8 +145,12 @@ end
 -- Zenities look. Keybinds below are unchanged.
 hl.config({
     general = {
-        gaps_in  = user.gaps_in,
+        -- Hyprland adds gaps_in on both sides of a split, so the visible
+        -- gutter is twice the value. Store and show the visible size.
+        gaps_in  = math.floor(user.gaps_in / 2),
         gaps_out = user.gaps_out,
+        -- Floating windows use the same outer gap. Real fullscreen ignores it.
+        float_gaps = user.gaps_out,
 
         border_size = 0,
 
@@ -167,8 +172,8 @@ hl.config({
             enabled         = true,
             vibrancy        = 0.8,
             contrast        = 0.6,
-            size            = 6,
-            passes          = 3,
+            size            = 5,
+            passes          = 2,
             ignore_opacity  = true,
             new_optimizations = true,
         },
@@ -190,22 +195,20 @@ hl.config({
 })
 
 hl.curve("basic", { type = "bezier", points = { {0.05, 0.8}, {0.1, 1} } })
-hl.curve("easeOut", { type = "bezier", points = { {0.22, 1.0}, {0.36, 1.0} } })
-hl.curve("easeInOut", { type = "bezier", points = { {0.45, 0.0}, {0.35, 1.0} } })
+hl.curve("easeOut", { type = "bezier", points = { {0.16, 1.0}, {0.3, 1.0} } })
+hl.curve("easeInOut", { type = "bezier", points = { {0.4, 0.0}, {0.2, 1.0} } })
 
-hl.animation({ leaf = "global",      enabled = true, speed = 8, bezier = "default" })
--- Overlay panels slide from the edge they are anchored
--- to. Slow enough to read, and the exit is slower than the entrance.
-hl.animation({ leaf = "layersIn",    enabled = true, speed = 4.5, bezier = "easeOut",   style = "slide" })
-hl.animation({ leaf = "layersOut",   enabled = true, speed = 5.5, bezier = "easeInOut", style = "slide" })
-hl.animation({ leaf = "fadeLayersIn",  enabled = true, speed = 4.5, bezier = "easeOut" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 5.5, bezier = "easeInOut" })
-hl.animation({ leaf = "windows",     enabled = true, speed = 2.6, bezier = "easeOut" })
-hl.animation({ leaf = "windowsOut",  enabled = true, speed = 2.8, bezier = "easeOut", style = "popin 92%" })
-hl.animation({ leaf = "windowsIn",   enabled = true, speed = 2.6, bezier = "easeOut", style = "popin 92%" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 2.6, bezier = "easeOut" })
-hl.animation({ leaf = "fade",        enabled = true, speed = 2.4, bezier = "easeOut" })
-hl.animation({ leaf = "workspaces",  enabled = true, speed = 3.2, bezier = "easeOut", style = "slide" })
+hl.animation({ leaf = "global",      enabled = true, speed = 4, bezier = "easeOut" })
+hl.animation({ leaf = "layersIn",    enabled = true, speed = 1.8, bezier = "easeOut",   style = "slide" })
+hl.animation({ leaf = "layersOut",   enabled = true, speed = 1.6, bezier = "easeOut", style = "slide" })
+hl.animation({ leaf = "fadeLayersIn",  enabled = true, speed = 1.6, bezier = "easeOut" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.4, bezier = "easeOut" })
+hl.animation({ leaf = "windows",     enabled = true, speed = 1.8, bezier = "easeOut" })
+hl.animation({ leaf = "windowsOut",  enabled = true, speed = 1.6, bezier = "easeOut", style = "popin 96%" })
+hl.animation({ leaf = "windowsIn",   enabled = true, speed = 1.7, bezier = "easeOut", style = "popin 96%" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 1.6, bezier = "easeOut" })
+hl.animation({ leaf = "fade",        enabled = true, speed = 1.4, bezier = "easeOut" })
+hl.animation({ leaf = "workspaces",  enabled = true, speed = 2.0, bezier = "easeOut", style = "slide" })
 
 -- Ref https://wiki.hypr.land/configuring/core/rules/workspace-rules/
 -- "Smart gaps" / "No gaps when only"
@@ -253,10 +256,11 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 0,
+        disable_hyprland_logo   = true,
         disable_splash_rendering = true,
         key_press_enables_dpms = true,
+        vrr = 1,
     },
 })
 
@@ -337,24 +341,25 @@ hl.bind(mainMod .. " + J", hl.dsp.exec_cmd(music))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(launcher))
 hl.bind(secondMod .. " + SPACE", hl.dsp.exec_cmd(runner))
 hl.bind(mainMod .. " + X", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind(mainMod .. " + B", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 --hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Wallpaper picker: live GIFs plus static stills.
-hl.bind("SUPER + SHIFT+ T", hl.dsp.exec_cmd("/home/ping/.local/bin/ags toggle wallpaper"))
+hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle.sh wallpaper"))
 
 -- Show or hide the right-side control center.
-hl.bind("SUPER + C", hl.dsp.exec_cmd("/home/ping/.local/bin/ags toggle control-center"))
+hl.bind("SUPER + C", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle.sh control-center"))
 
 -- Settings popup (cursor, gaps, rounding). Values persist outside this file.
-hl.bind("SUPER + H", hl.dsp.exec_cmd("/home/ping/.local/bin/ags toggle settings"))
+hl.bind("SUPER + H", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle.sh settings"))
 
 -- Clipboard history. Super+V is still focus-down.
 hl.bind("SUPER + CTRL + V", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/clip-history.py pick"))
 
--- Move focus with mainMod + arrow keys
+-- Move focus with Super + M/Z/W/V. Super+arrows stay for in-app history.
 hl.bind(mainMod .. " + M",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + Z", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + W",    hl.dsp.focus({ direction = "up" }))
@@ -364,6 +369,17 @@ hl.bind(secondMod .. " + M", hl.dsp.window.move({direction = "left"}))
 hl.bind(secondMod .. " + Z", hl.dsp.window.move({direction = "right"}))
 hl.bind(secondMod .. " + W", hl.dsp.window.move({direction = "up"}))
 hl.bind(secondMod .. " + V", hl.dsp.window.move({direction = "down"}))
+
+-- Super+arrows: same as Alt+arrows in the focused app
+-- (browser/file-manager back, forward, up a folder, open).
+hl.bind(mainMod .. " + left",  hl.dsp.send_shortcut({ mods = "ALT", key = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.send_shortcut({ mods = "ALT", key = "right" }))
+hl.bind(mainMod .. " + up",    hl.dsp.send_shortcut({ mods = "ALT", key = "up" }))
+hl.bind(mainMod .. " + down",  hl.dsp.send_shortcut({ mods = "ALT", key = "down" }))
+
+-- GTK Inspector for AGS (Super+C overlay). Overlay does not take keys,
+-- so this opens it through the AGS CLI instead of Ctrl+Shift+I.
+hl.bind(secondMod .. " + I", hl.dsp.exec_cmd("/home/ping/.local/bin/ags inspect"))
 
 
 -- Super+1..9 and Super+0 always exist, matching the dashboard pills.
@@ -390,8 +406,8 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = "special:mag
 -- Lock the session
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/lock.sh"))
 
--- Alt+Tab swaps the two most recent apps on this workspace.
--- Super+Tab lists every window here so you can jump to any of them.
+-- Alt+Tab: Windows tap — last two windows on this desktop.
+-- Super+Tab: Windows Task View — every window on every desktop.
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/alt-tab.py"))
 hl.bind("SUPER + TAB", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/window-switcher.py"))
 
@@ -435,12 +451,11 @@ local suppressMaximizeRule = hl.window_rule({
 })
 -- suppressMaximizeRule:set_enabled(false)
 
--- Apps tile so two windows sit side by side. Super+F maximizes inside the
--- tile; gaps_out keeps a wallpaper frame around even a single "fullscreen"
--- window. Empty-class XWayland helpers stay unmatched.
+-- Apps tile so two windows sit side by side. Super+F and Super+B are real
+-- fullscreen (no gaps). Empty-class XWayland helpers stay unmatched.
 
 -- New GUI windows open floating and centered, about half the screen.
--- Super+X tiles them side by side; Super+F maximizes inside the gaps.
+-- Super+X tiles them side by side.
 hl.window_rule({
     name  = "spawn-float",
     match = { class = ".+" },

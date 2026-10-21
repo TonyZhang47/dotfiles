@@ -33,6 +33,7 @@ fi
 stamp="${XDG_RUNTIME_DIR:-/tmp}/battery-ac-online"
 if [ ! -f "$stamp" ]; then
     printf '%s\n' "$online" >"$stamp"
+    "$HOME/.config/ags/scripts/on-power-source.sh"
     exit 0
 fi
 
@@ -41,6 +42,7 @@ if [ "$prev" = "$online" ]; then
     exit 0
 fi
 printf '%s\n' "$online" >"$stamp"
+"$HOME/.config/ags/scripts/on-power-source.sh"
 
 if [ "$online" = 1 ]; then
     "$HOME/.config/ags/scripts/notify.sh" Battery "Charging" "${cap}%" >/dev/null 2>&1 &

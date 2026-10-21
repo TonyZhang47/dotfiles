@@ -63,8 +63,34 @@ if [ -f "$LOCK_CONFIG" ]; then
     sed -i "s|^    path = .*|    path = $STILL|" "$LOCK_CONFIG"
 fi
 
-mkdir -p "$HOME/.cache/matugen"
-run_if_exists matugen image -m dark --source-color-index 0 "$STILL"
+# GTK4 gtk.css must not be a symlink into /usr/share/themes — matugen would
+# overwrite the system theme.
+for css in "$HOME/.config/gtk-3.0/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"; do
+    if [ -L "$css" ]; then
+        rm -f "$css"
+    fi
+done
+mkdir -p \
+    "$HOME/.cache/matugen" \
+    "$HOME/.config/rice" \
+    "$HOME/.config/gtk-3.0" \
+    "$HOME/.config/gtk-4.0" \
+    "$HOME/.config/qt5ct/colors" \
+    "$HOME/.config/qt6ct/colors" \
+    "$HOME/.config/btop/themes" \
+    "$HOME/.config/heroic/themes" \
+    "$HOME/.config/mpv" \
+    "$HOME/.config/imv" \
+    "$HOME/.config/satty"
+SCHEME="$HOME/.config/rice/scheme.json"
+if ! command -v matugen >/dev/null 2>&1; then
+    echo "Skip: Command matugen not found."
+else
+    # Dry-run so the contrast pass can lift text before any theme file is written.
+    matugen image --dry-run -q -j hex -m dark --source-color-index 0 "$STILL" > "$SCHEME"
+    python3 "$HOME/.config/ags/scripts/ensure-contrast.py" "$SCHEME" || exit 1
+    matugen json -q -m dark "$SCHEME"
+fi
 
 if [[ "$RELOAD_APPS" == "--generate-only" || "$RELOAD_APPS" == "-g" ]]; then
     echo "Generate only. Skipping app reload."
@@ -88,3 +114,5 @@ for sock in /tmp/nvim*; do
         run_if_exists nvim --server "$sock" --remote-send "<cmd>colorscheme lush-colors<CR>"
     fi
 done
+
+"$HOME/.config/ags/scripts/apply-app-theme.sh" || true

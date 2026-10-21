@@ -73,7 +73,7 @@ box.window {
 
 .dash-clock-date {
   font-size: 12px;
-  color: $color3;
+  color: $color5;
 }
 
 .dash-uptime-inline {
@@ -137,7 +137,7 @@ box.window {
 
 .dash-weather-c {
   font-size: 11px;
-  color: $color3;
+  color: $color5;
   margin-top: 2px;
 }
 
@@ -150,12 +150,12 @@ box.window {
   min-height: 32px;
   padding: 0;
   border-radius: 8px;
-  color: $color3;
+  color: $color5;
   background-color: transparent;
 }
 
 .dash-ws.empty {
-  color: mix($color3, $background, 55%);
+  color: $color4;
 }
 
 .dash-ws.occupied {
@@ -275,7 +275,7 @@ box.window {
 
 .artist-widget {
   font-size: 12px;
-  color: $color3;
+  color: $color5;
   min-height: 14px;
 }
 
@@ -323,7 +323,7 @@ box.window {
 .meter-name {
   min-width: 48px;
   font-size: 12px;
-  color: $color3;
+  color: $color5;
 }
 
 .meter-val {
@@ -387,7 +387,7 @@ box.window {
 }
 
 .weekdays label {
-  color: $color3;
+  color: $color5;
 }
 
 .calendar-grid .day {
@@ -396,8 +396,8 @@ box.window {
 }
 
 .calendar-grid .today {
-  color: $background;
-  background-color: $color2;
+  color: $color0;
+  background-color: $color6;
   border-radius: 6px;
   font-weight: bold;
   padding: 2px;
@@ -417,7 +417,7 @@ box.window {
 
 .settings-hint {
   font-size: 11px;
-  color: $color3;
+  color: $color5;
   margin-bottom: 4px;
 }
 

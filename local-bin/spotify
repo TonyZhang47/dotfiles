@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+if [ -x "/opt/spotify/spotify" ] && [ "/opt/spotify/spotify" -nt "/home/ping/.local/opt/spotify/spotify" ]; then
+    "/home/ping/.config/ags/scripts/setup-spotify.sh"
+fi
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+flags=()
+if [ -f "$XDG_CONFIG_HOME/spotify-flags.conf" ]; then
+    mapfile -t flags < <(grep -v '^#' "$XDG_CONFIG_HOME/spotify-flags.conf" | grep -v '^$')
+fi
+exec "/home/ping/.local/opt/spotify/spotify" "${flags[@]}" "$@"

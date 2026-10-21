@@ -1,0 +1,45 @@
+@-moz-document url("about:home"),
+               url("about:newtab"),
+               url("about:privatebrowsing"),
+               url("about:blank") {
+  :root {
+    --newtab-background-color: {{base16.base00.default.hex}} !important;
+    --newtab-text-primary-color: {{base16.base07.default.hex}} !important;
+    --newtab-textbox-background-color: {{base16.base01.default.hex}} !important;
+  }
+
+  html,
+  body,
+  .outer-wrapper,
+  .search-wrapper,
+  main {
+    background-color: {{base16.base00.default.hex}} !important;
+    color: {{base16.base07.default.hex}} !important;
+  }
+
+  .search-handoff-button,
+  .search-inner-wrapper,
+  input {
+    background-color: {{base16.base01.default.hex}} !important;
+    color: {{base16.base07.default.hex}} !important;
+    border-color: {{base16.base03.default.hex}} !important;
+    border-radius: 12px !important;
+  }
+
+  .top-site-outer .tile,
+  .top-site-inner {
+    background-color: {{base16.base01.default.hex}} !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+  }
+}
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --in-content-page-background: {{base16.base00.default.hex}} !important;
+    --in-content-page-color: {{base16.base07.default.hex}} !important;
+    --in-content-box-background: {{base16.base01.default.hex}} !important;
+    --in-content-box-border-color: {{base16.base03.default.hex}} !important;
+    --in-content-primary-button-background: {{base16.base02.default.hex}} !important;
+  }
+}

@@ -1,0 +1,15 @@
+/* Layout only. Colors come from the Rice theme so a wallpaper change can
+   restyle the browser without waiting for userChrome to be read again. */
+.tabbrowser-tab .tab-background {
+  border-radius: 10px !important;
+}
+
+#urlbar-background,
+#urlbar-input-container,
+#searchbar {
+  border-radius: 12px !important;
+}
+
+#navigator-toolbox {
+  border-bottom: none !important;
+}

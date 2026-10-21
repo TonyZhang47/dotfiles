@@ -1,0 +1,20 @@
+[general]
+copy-command = "wl-copy"
+early-exit = ["copy", "save"]
+corner-roundness = 12
+annotation-size-factor = 1
+disable-notifications = false
+
+[font]
+family = "Iosevka Nerd Font"
+style = "Regular"
+
+[color-palette]
+palette = [
+  "#c3bebe",
+  "#bcb4b4",
+  "#b5acac",
+  "#69cb97",
+  "#eccae2",
+  "#dda69f",
+]

@@ -1,0 +1,20 @@
+[colors]
+table_header_color = "{{base16.base06.default.hex}}"
+widget_title_color = "{{base16.base07.default.hex}}"
+avg_cpu_color = "{{base16.base06.default.hex}}"
+cpu_core_colors = ["{{base16.base06.default.hex}}", "{{base16.base05.default.hex}}", "{{base16.base0b.default.hex}}", "{{base16.base0e.default.hex}}", "{{base16.base07.default.hex}}", "{{base16.base08.default.hex}}"]
+ram_color = "{{base16.base06.default.hex}}"
+swap_color = "{{base16.base05.default.hex}}"
+arc_color = "{{base16.base0b.default.hex}}"
+gpu_core_colors = ["{{base16.base0b.default.hex}}", "{{base16.base06.default.hex}}", "{{base16.base08.default.hex}}"]
+rx_color = "{{base16.base0b.default.hex}}"
+tx_color = "{{base16.base06.default.hex}}"
+border_color = "{{base16.base03.default.hex}}"
+highlighted_border_color = "{{base16.base06.default.hex}}"
+text_color = "{{base16.base07.default.hex}}"
+selected_text_color = "{{base16.base00.default.hex}}"
+selected_bg_color = "{{base16.base07.default.hex}}"
+graph_color = "{{base16.base04.default.hex}}"
+high_battery_color = "{{base16.base0b.default.hex}}"
+medium_battery_color = "{{base16.base06.default.hex}}"
+low_battery_color = "{{base16.base08.default.hex}}"

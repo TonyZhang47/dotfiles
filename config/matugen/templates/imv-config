@@ -1,0 +1,7 @@
+[options]
+background = {{base16.base00.default.hex_stripped}}
+overlay_text_color = {{base16.base07.default.hex_stripped}}
+overlay_text_alpha = ee
+overlay_background_color = {{base16.base00.default.hex_stripped}}
+overlay_background_alpha = cc
+overlay_font = Iosevka Nerd Font:11

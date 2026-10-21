@@ -1,0 +1,6 @@
+{
+  "keys": "{{base16.base06.default.hex}}",
+  "title": "{{base16.base07.default.hex}}",
+  "output": "{{base16.base07.default.hex}}",
+  "separator": "{{base16.base04.default.hex}}"
+}

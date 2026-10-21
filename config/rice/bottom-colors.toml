@@ -1,0 +1,20 @@
+[colors]
+table_header_color = "#bcb4b4"
+widget_title_color = "#c3bebe"
+avg_cpu_color = "#bcb4b4"
+cpu_core_colors = ["#bcb4b4", "#b5acac", "#69cb97", "#eccae2", "#c3bebe", "#dda69f"]
+ram_color = "#bcb4b4"
+swap_color = "#b5acac"
+arc_color = "#69cb97"
+gpu_core_colors = ["#69cb97", "#bcb4b4", "#dda69f"]
+rx_color = "#69cb97"
+tx_color = "#bcb4b4"
+border_color = "#564b4b"
+highlighted_border_color = "#bcb4b4"
+text_color = "#c3bebe"
+selected_text_color = "#282828"
+selected_bg_color = "#c3bebe"
+graph_color = "#ada3a3"
+high_battery_color = "#69cb97"
+medium_battery_color = "#bcb4b4"
+low_battery_color = "#dda69f"

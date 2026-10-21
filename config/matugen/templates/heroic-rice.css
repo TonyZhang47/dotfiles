@@ -1,0 +1,28 @@
+body,
+body.sunken-dark,
+#root {
+  --background: {{base16.base00.default.hex}};
+  --background-darker: {{base16.base00.default.hex}};
+  --background-lighter: {{base16.base01.default.hex}};
+  --body-background: {{base16.base00.default.hex}};
+  --current-background: {{base16.base00.default.hex}};
+  --navbar-background: {{base16.base00.default.hex}};
+  --navbar-active-background: {{base16.base01.default.hex}};
+  --input-background: {{base16.base01.default.hex}};
+  --modal-background: {{base16.base01.default.hex}};
+  --modal-border: {{base16.base03.default.hex}};
+  --text-default: {{base16.base07.default.hex}};
+  --text-secondary: {{base16.base04.default.hex}};
+  --text-tertiary: {{base16.base05.default.hex}};
+  --primary: {{base16.base06.default.hex}};
+  --secondary: {{base16.base02.default.hex}};
+  --tertiary: {{base16.base01.default.hex}};
+  --quaternary: {{base16.base03.default.hex}};
+  --accent: {{base16.base06.default.hex}};
+  --success: {{base16.base0b.default.hex}};
+  --danger: {{base16.base08.default.hex}};
+  --icons-background: {{base16.base01.default.hex}};
+  --osk-background: {{base16.base00.default.hex}};
+  --osk-button-background: {{base16.base01.default.hex}};
+  --osk-button-border: {{base16.base03.default.hex}};
+}

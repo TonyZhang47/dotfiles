@@ -7,7 +7,7 @@ PATH = os.path.expanduser("~/.config/hypr/user-settings.json")
 DEFAULTS = {
     "sensitivity": 0.5,
     "scroll_factor": 0.2,
-    "gaps_in": 8,
+    "gaps_in": 18,
     "gaps_out": 18,
     "rounding": 14,
     "inactive_opacity": 0.9,
@@ -41,7 +41,7 @@ def view(data):
         "scroll_factor": round(scroll, 2),
         "scroll_i": int(round(scroll * 100)),
         "scroll_label": f"{scroll:.2f}",
-        "gaps_in": int(data.get("gaps_in", 8)),
+        "gaps_in": int(data.get("gaps_in", 18)),
         "gaps_out": int(data.get("gaps_out", 18)),
         "rounding": int(data.get("rounding", 14)),
         "inactive_opacity": round(opacity, 2),

@@ -1,0 +1,20 @@
+[general]
+copy-command = "wl-copy"
+early-exit = ["copy", "save"]
+corner-roundness = 12
+annotation-size-factor = 1
+disable-notifications = false
+
+[font]
+family = "Iosevka Nerd Font"
+style = "Regular"
+
+[color-palette]
+palette = [
+  "{{base16.base07.default.hex}}",
+  "{{base16.base06.default.hex}}",
+  "{{base16.base05.default.hex}}",
+  "{{base16.base0b.default.hex}}",
+  "{{base16.base0e.default.hex}}",
+  "{{base16.base08.default.hex}}",
+]

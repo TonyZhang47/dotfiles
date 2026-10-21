@@ -84,20 +84,40 @@ export function boolOf(out: string): boolean {
     return String(out).trim() === "true"
 }
 
+async function pollOut(cmd: string): Promise<string> {
+    try {
+        return await execAsync(["bash", "-c", cmd])
+    } catch {
+        return ""
+    }
+}
+
 export function jsonPoll<T>(init: T, interval: number, cmd: string) {
-    return createPoll(init, interval, ["bash", "-c", cmd], (out, prev) => parseJson(out, prev))
+    return createPoll(init, interval, async (prev) => {
+        const out = await pollOut(cmd)
+        return out ? parseJson(out, prev) : prev
+    })
 }
 
 export function numPoll(init: number, interval: number, cmd: string) {
-    return createPoll(init, interval, ["bash", "-c", cmd], (out, prev) => numOf(out, prev))
+    return createPoll(init, interval, async (prev) => {
+        const out = await pollOut(cmd)
+        return out ? numOf(out, prev) : prev
+    })
 }
 
 export function strPoll(init: string, interval: number, cmd: string) {
-    return createPoll(init, interval, ["bash", "-c", cmd], (out) => String(out).trim())
+    return createPoll(init, interval, async (prev) => {
+        const out = await pollOut(cmd)
+        return out ? String(out).trim() : prev
+    })
 }
 
 export function boolPoll(init: boolean, interval: number, cmd: string) {
-    return createPoll(init, interval, ["bash", "-c", cmd], (out) => boolOf(out))
+    return createPoll(init, interval, async (prev) => {
+        const out = await pollOut(cmd)
+        return out ? boolOf(out) : prev
+    })
 }
 
 export function follow(init: string, cmd: string) {

@@ -33,3 +33,83 @@ output_path = '~/.config/ghostty/ghostty-colors'
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava-config'
 output_path = '~/.config/cava/config'
+
+[templates.firefox]
+input_path = '~/.config/matugen/templates/firefox-colors.css'
+output_path = '~/.config/firefox-theme/colors.css'
+
+[templates.firefox_userjs]
+input_path = '~/.config/matugen/templates/firefox-user.js'
+output_path = '~/.config/firefox-theme/user.js'
+
+[templates.firefox_chrome]
+input_path = '~/.config/matugen/templates/firefox-userChrome.css'
+output_path = '~/.config/firefox-theme/userChrome.css'
+
+[templates.firefox_content]
+input_path = '~/.config/matugen/templates/firefox-userContent.css'
+output_path = '~/.config/firefox-theme/userContent.css'
+
+[templates.spicetify]
+input_path = '~/.config/matugen/templates/spicetify-color.ini'
+output_path = '~/.config/spicetify/Themes/rice/color.ini'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+
+[templates.qt5]
+input_path = '~/.config/matugen/templates/qt-rice.conf'
+output_path = '~/.config/qt5ct/colors/rice.conf'
+
+[templates.qt6]
+input_path = '~/.config/matugen/templates/qt-rice.conf'
+output_path = '~/.config/qt6ct/colors/rice.conf'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop-rice.theme'
+output_path = '~/.config/btop/themes/rice.theme'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.vscode]
+input_path = '~/.config/matugen/templates/vscode-colors.json'
+output_path = '~/.config/rice/vscode-colors.json'
+
+[templates.heroic]
+input_path = '~/.config/matugen/templates/heroic-rice.css'
+output_path = '~/.config/heroic/themes/rice.css'
+
+[templates.fzf]
+input_path = '~/.config/matugen/templates/fzf-rice.sh'
+output_path = '~/.config/rice/fzf.sh'
+
+[templates.mpv]
+input_path = '~/.config/matugen/templates/mpv-colors.conf'
+output_path = '~/.config/mpv/colors.conf'
+
+[templates.imv]
+input_path = '~/.config/matugen/templates/imv-config'
+output_path = '~/.config/imv/config'
+
+[templates.satty]
+input_path = '~/.config/matugen/templates/satty-config.toml'
+output_path = '~/.config/satty/config.toml'
+
+[templates.bottom]
+input_path = '~/.config/matugen/templates/bottom-colors.toml'
+output_path = '~/.config/rice/bottom-colors.toml'
+
+[templates.rice_env]
+input_path = '~/.config/matugen/templates/rice-colors.env'
+output_path = '~/.config/rice/colors.env'
+
+[templates.fastfetch]
+input_path = '~/.config/matugen/templates/fastfetch-color.json'
+output_path = '~/.config/rice/fastfetch-color.json'

@@ -22,7 +22,7 @@
 
     background-color: @background;
     background: {{base16.base00.default.hex}};
-    foreground: {{base16.base05.default.hex}};
+    foreground: {{base16.base07.default.hex}};
     border-color: @background;
     spacing: 2;
 }

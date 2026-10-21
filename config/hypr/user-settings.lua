@@ -2,7 +2,7 @@
 return {
   sensitivity = 0.99,
   scroll_factor = 0.2,
-  gaps_in = 8,
+  gaps_in = 18,
   gaps_out = 18,
   rounding = 14,
   inactive_opacity = 0.9,

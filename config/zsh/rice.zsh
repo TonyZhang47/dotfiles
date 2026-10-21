@@ -2,6 +2,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # fzf
 eval "$(fzf --zsh)"
+[ -f "$HOME/.config/rice/fzf.sh" ] && source "$HOME/.config/rice/fzf.sh"
 
 # thefuck (ONLY ONCE)
 eval "$(thefuck --alias fuck)"

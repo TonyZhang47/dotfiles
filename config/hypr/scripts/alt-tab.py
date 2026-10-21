@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alt+Tab: swap the two most recent applications on this workspace."""
+"""Alt+Tab: Windows-style tap — swap the last two windows on this desktop."""
 import json
 import subprocess
 
@@ -21,7 +21,7 @@ def active_workspace_id():
     return ws.get("id")
 
 
-def clients():
+def desktop_windows():
     try:
         data = json.loads(hypr("-j", "clients").stdout or "[]")
     except json.JSONDecodeError:
@@ -29,37 +29,35 @@ def clients():
     current = active_workspace_id()
     out = []
     for c in data:
-        cls = c.get("class") or ""
+        cls = (c.get("class") or "").lower()
         if not c.get("mapped") or c.get("hidden"):
             continue
-        if cls == "" or cls.lower() == "rofi":
+        if cls in ("", "rofi", "gjs"):
+            continue
+        if not c.get("address"):
             continue
         ws = (c.get("workspace") or {}).get("id")
         if current is not None and ws != current:
             continue
         out.append(c)
+    out.sort(key=lambda w: w.get("focusHistoryID", 9999))
     return out
 
 
-def main():
-    wins = clients()
-    newest = {}
-    for w in wins:
-        cls = w.get("class")
-        hist = w.get("focusHistoryID", 9999)
-        prev = newest.get(cls)
-        if prev is None or hist < prev.get("focusHistoryID", 9999):
-            newest[cls] = w
-    order = sorted(newest.values(), key=lambda w: w.get("focusHistoryID", 9999))
-    if len(order) < 2:
-        return
-    target = order[1]
-    addr = target.get("address")
+def focus(win):
+    addr = win.get("address")
     if not addr:
         return
     hypr("dispatch", f'hl.dsp.focus({{ window = "address:{addr}" }})')
-    if target.get("floating"):
+    if win.get("floating"):
         hypr("dispatch", "hl.dsp.window.bring_to_top()")
+
+
+def main():
+    wins = desktop_windows()
+    if len(wins) < 2:
+        return
+    focus(wins[1])
 
 
 if __name__ == "__main__":

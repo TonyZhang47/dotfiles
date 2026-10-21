@@ -1,0 +1,77 @@
+[mgr]
+cwd = { fg = "{{base16.base07.default.hex}}" }
+hovered = { fg = "{{base16.base07.default.hex}}", bg = "{{base16.base01.default.hex}}" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "{{base16.base06.default.hex}}", italic = true }
+find_position = { fg = "{{base16.base04.default.hex}}", bg = "reset", italic = true }
+marker_copied = { fg = "{{base16.base0b.default.hex}}", bg = "{{base16.base0b.default.hex}}" }
+marker_cut = { fg = "{{base16.base08.default.hex}}", bg = "{{base16.base08.default.hex}}" }
+marker_selected = { fg = "{{base16.base06.default.hex}}", bg = "{{base16.base06.default.hex}}" }
+tab_active = { fg = "{{base16.base00.default.hex}}", bg = "{{base16.base07.default.hex}}" }
+tab_inactive = { fg = "{{base16.base07.default.hex}}", bg = "{{base16.base01.default.hex}}" }
+border_symbol = " "
+border_style = { fg = "{{base16.base03.default.hex}}" }
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "{{base16.base01.default.hex}}", bg = "{{base16.base01.default.hex}}" }
+mode_normal = { fg = "{{base16.base00.default.hex}}", bg = "{{base16.base07.default.hex}}", bold = true }
+mode_select = { fg = "{{base16.base00.default.hex}}", bg = "{{base16.base06.default.hex}}", bold = true }
+mode_unset = { fg = "{{base16.base00.default.hex}}", bg = "{{base16.base04.default.hex}}", bold = true }
+progress_label = { bold = true }
+progress_normal = { fg = "{{base16.base06.default.hex}}", bg = "{{base16.base00.default.hex}}" }
+progress_error = { fg = "{{base16.base08.default.hex}}", bg = "{{base16.base00.default.hex}}" }
+
+[which]
+mask = { bg = "{{base16.base00.default.hex}}" }
+cand = { fg = "{{base16.base06.default.hex}}" }
+rest = { fg = "{{base16.base05.default.hex}}" }
+desc = { fg = "{{base16.base07.default.hex}}" }
+separator_style = { fg = "{{base16.base03.default.hex}}" }
+
+[confirm]
+border = { fg = "{{base16.base06.default.hex}}" }
+title = { fg = "{{base16.base06.default.hex}}" }
+
+[spot]
+border = { fg = "{{base16.base06.default.hex}}" }
+title = { fg = "{{base16.base06.default.hex}}" }
+
+[notify]
+title_info = { fg = "{{base16.base06.default.hex}}" }
+title_warn = { fg = "{{base16.base0b.default.hex}}" }
+title_error = { fg = "{{base16.base08.default.hex}}" }
+
+[pick]
+border = { fg = "{{base16.base06.default.hex}}" }
+active = { fg = "{{base16.base07.default.hex}}" }
+
+[input]
+border = { fg = "{{base16.base06.default.hex}}" }
+selected = { reversed = true }
+
+[completion]
+border = { fg = "{{base16.base06.default.hex}}" }
+active = { reversed = true }
+
+[tasks]
+border = { fg = "{{base16.base06.default.hex}}" }
+hovered = { underline = true }
+
+[help]
+on = { fg = "{{base16.base06.default.hex}}" }
+run = { fg = "{{base16.base07.default.hex}}" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "{{base16.base00.default.hex}}", bg = "{{base16.base07.default.hex}}" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "{{base16.base06.default.hex}}" },
+  { mime = "video/*", fg = "{{base16.base0b.default.hex}}" },
+  { mime = "audio/*", fg = "{{base16.base0e.default.hex}}" },
+  { mime = "application/*zip", fg = "{{base16.base08.default.hex}}" },
+  { mime = "application/x-tar", fg = "{{base16.base08.default.hex}}" },
+  { mime = "application/x-bzip*", fg = "{{base16.base08.default.hex}}" },
+  { name = "*/", fg = "{{base16.base07.default.hex}}" },
+]

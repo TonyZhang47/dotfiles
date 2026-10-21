@@ -1,12 +1,77 @@
-# vim:fileencoding=utf-8:foldmethod=marker
-
 [mgr]
-# : Manager {{{
-
-# Border
-
+cwd = { fg = "#c3bebe" }
+hovered = { fg = "#c3bebe", bg = "#3f3838" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#bcb4b4", italic = true }
+find_position = { fg = "#ada3a3", bg = "reset", italic = true }
+marker_copied = { fg = "#69cb97", bg = "#69cb97" }
+marker_cut = { fg = "#dda69f", bg = "#dda69f" }
+marker_selected = { fg = "#bcb4b4", bg = "#bcb4b4" }
+tab_active = { fg = "#282828", bg = "#c3bebe" }
+tab_inactive = { fg = "#c3bebe", bg = "#3f3838" }
 border_symbol = " "
-border_style  = { fg = "#838ba7" }
+border_style = { fg = "#564b4b" }
 
-# : }}}
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#3f3838", bg = "#3f3838" }
+mode_normal = { fg = "#282828", bg = "#c3bebe", bold = true }
+mode_select = { fg = "#282828", bg = "#bcb4b4", bold = true }
+mode_unset = { fg = "#282828", bg = "#ada3a3", bold = true }
+progress_label = { bold = true }
+progress_normal = { fg = "#bcb4b4", bg = "#282828" }
+progress_error = { fg = "#dda69f", bg = "#282828" }
 
+[which]
+mask = { bg = "#282828" }
+cand = { fg = "#bcb4b4" }
+rest = { fg = "#b5acac" }
+desc = { fg = "#c3bebe" }
+separator_style = { fg = "#564b4b" }
+
+[confirm]
+border = { fg = "#bcb4b4" }
+title = { fg = "#bcb4b4" }
+
+[spot]
+border = { fg = "#bcb4b4" }
+title = { fg = "#bcb4b4" }
+
+[notify]
+title_info = { fg = "#bcb4b4" }
+title_warn = { fg = "#69cb97" }
+title_error = { fg = "#dda69f" }
+
+[pick]
+border = { fg = "#bcb4b4" }
+active = { fg = "#c3bebe" }
+
+[input]
+border = { fg = "#bcb4b4" }
+selected = { reversed = true }
+
+[completion]
+border = { fg = "#bcb4b4" }
+active = { reversed = true }
+
+[tasks]
+border = { fg = "#bcb4b4" }
+hovered = { underline = true }
+
+[help]
+on = { fg = "#bcb4b4" }
+run = { fg = "#c3bebe" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "#282828", bg = "#c3bebe" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#bcb4b4" },
+  { mime = "video/*", fg = "#69cb97" },
+  { mime = "audio/*", fg = "#eccae2" },
+  { mime = "application/*zip", fg = "#dda69f" },
+  { mime = "application/x-tar", fg = "#dda69f" },
+  { mime = "application/x-bzip*", fg = "#dda69f" },
+  { name = "*/", fg = "#c3bebe" },
+]

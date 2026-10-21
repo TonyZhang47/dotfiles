@@ -1,0 +1,45 @@
+@-moz-document url("about:home"),
+               url("about:newtab"),
+               url("about:privatebrowsing"),
+               url("about:blank") {
+  :root {
+    --newtab-background-color: #282828 !important;
+    --newtab-text-primary-color: #c3bebe !important;
+    --newtab-textbox-background-color: #3f3838 !important;
+  }
+
+  html,
+  body,
+  .outer-wrapper,
+  .search-wrapper,
+  main {
+    background-color: #282828 !important;
+    color: #c3bebe !important;
+  }
+
+  .search-handoff-button,
+  .search-inner-wrapper,
+  input {
+    background-color: #3f3838 !important;
+    color: #c3bebe !important;
+    border-color: #564b4b !important;
+    border-radius: 12px !important;
+  }
+
+  .top-site-outer .tile,
+  .top-site-inner {
+    background-color: #3f3838 !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+  }
+}
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --in-content-page-background: #282828 !important;
+    --in-content-page-color: #c3bebe !important;
+    --in-content-box-background: #3f3838 !important;
+    --in-content-box-border-color: #564b4b !important;
+    --in-content-primary-button-background: #4c4444 !important;
+  }
+}

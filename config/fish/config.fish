@@ -10,24 +10,22 @@ end
 set -g fish_greeting ""
 
 # --- Syntax Highlighting ---
-# These name palette slots rather than hex values, so they follow the kitty colors
-# matugen regenerates from the wallpaper. The names are not literal: black, red,
-# green, yellow, blue, magenta, cyan and white are the wallpaper hue's ramp from
-# darkest to brightest, and the br* names are its secondary tones. Avoid brblack,
-# which matugen renders almost identical to the background.
+# These name kitty's ANSI slots, which follow the wallpaper. Yellow, blue, and
+# magenta are light enough for the dark prompt text. Bright black is the muted
+# text color. Quotes use yellow so a commit message cannot blend into the background.
 set -g fish_color_normal normal
 set -g fish_color_command white --bold
 set -g fish_color_param cyan
 set -g fish_color_keyword magenta
-set -g fish_color_quote bryellow
+set -g fish_color_quote yellow
 set -g fish_color_redirection brcyan
 set -g fish_color_end blue
 set -g fish_color_operator brmagenta
 set -g fish_color_escape brblue
-set -g fish_color_comment yellow
-set -g fish_color_autosuggestion yellow
-set -g fish_color_selection --background=red
-set -g fish_color_search_match --background=green
+set -g fish_color_comment brblack
+set -g fish_color_autosuggestion brblack
+set -g fish_color_selection white --background=brblack
+set -g fish_color_search_match black --background=green
 # Invalid input stays red in every theme so it cannot blend in.
 set -g fish_color_error f7768e
 

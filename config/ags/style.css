@@ -1,17 +1,494 @@
-/* Error: Undefined variable.
- *    ,
- * 21 |   color: $foreground;
- *    |          ^^^^^^^^^^^
- *    '
- *   style.scss 21:10  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 21 \2502    color: $foreground;\a    \2502           ^^^^^^^^^^^\a    \2575 \a   style.scss 21:10  root stylesheet";
+* {
+  all: unset;
+  font-family: "Iosevka Nerd Font";
+  font-weight: bold;
 }
+
+window {
+  background-color: transparent;
+}
+
+box.dash-card,
+box.controls,
+box.music-widget,
+box.resources,
+box.calendar-container,
+box.settings-panel,
+box.window {
+  background-color: #282828;
+  color: #c3bebe;
+  opacity: 1;
+}
+
+.icon-btn {
+  padding: 0;
+  margin: 0;
+}
+
+.icon-glyph {
+  font-family: "Iosevka Nerd Font Propo", "Iosevka NFP";
+  padding: 0;
+  margin: 0;
+}
+
+.dash-power-btn .icon-glyph {
+  font-size: 20px;
+}
+
+.control-center {
+  background-color: transparent;
+  padding: 0;
+}
+
+.dash-card {
+  background-color: #282828;
+  color: #c3bebe;
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.dash-clock,
+.dash-weather,
+.dash-power {
+  min-height: 148px;
+}
+
+.dash-weather {
+  min-width: 210px;
+}
+
+.dash-clock-time {
+  font-size: 32px;
+  color: #c3bebe;
+  font-weight: 700;
+}
+
+.dash-clock-day {
+  font-size: 14px;
+  color: #b5acac;
+  margin-top: 2px;
+}
+
+.dash-clock-date {
+  font-size: 12px;
+  color: #b5acac;
+}
+
+.dash-uptime-inline {
+  margin-top: 8px;
+}
+
+.dash-uptime-icon {
+  font-size: 28px;
+  color: #bcb4b4;
+}
+
+.dash-uptime-h {
+  font-size: 14px;
+  color: #bcb4b4;
+}
+
+.dash-power {
+  min-width: 132px;
+  padding: 10px;
+}
+
+.dash-power-btn {
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  margin: 0;
+  border-radius: 14px;
+  background-color: rgb(21.0980392157%, 19.8039215686%, 19.8039215686%);
+  color: #c3bebe;
+}
+
+.dash-power-lock {
+  color: #c3bebe;
+}
+
+.dash-power-sleep {
+  color: #bcb4b4;
+}
+
+.dash-power-reboot {
+  color: #b5acac;
+}
+
+.dash-power-off {
+  color: #c3bebe;
+}
+
+.dash-power-btn:hover {
+  background-color: rgb(39.1568627451%, 37.3921568627%, 37.3921568627%);
+}
+
+.dash-weather-icon {
+  font-size: 34px;
+}
+
+.dash-weather-temp {
+  font-size: 30px;
+  color: #bcb4b4;
+  font-weight: 700;
+}
+
+.dash-weather-city {
+  font-size: 13px;
+  color: #bcb4b4;
+  margin-top: 4px;
+}
+
+.dash-weather-text {
+  font-size: 13px;
+  color: #b5acac;
+}
+
+.dash-weather-c {
+  font-size: 11px;
+  color: #b5acac;
+  margin-top: 2px;
+}
+
+.dash-workspaces {
+  padding: 8px 10px;
+}
+
+.dash-ws {
+  min-width: 28px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 8px;
+  color: #b5acac;
+  background-color: transparent;
+}
+
+.dash-ws.empty {
+  color: #ada3a3;
+}
+
+.dash-ws.occupied {
+  color: #b5acac;
+}
+
+.dash-ws:hover {
+  color: #bcb4b4;
+  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+}
+
+.dash-ws.active {
+  background-color: #c3bebe;
+  color: #282828;
+  font-weight: 700;
+}
+
+.dash-folder {
+  padding: 3px 4px;
+  border-radius: 6px;
+  color: #b5acac;
+  font-size: 13px;
+}
+
+.dash-folder:hover {
+  color: #c3bebe;
+  background-color: rgb(17.4901960784%, 16.9411764706%, 16.9411764706%);
+}
+
+.dash-mid-col {
+  min-height: 156px;
+}
+
+.controls {
+  background-color: #282828;
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+.slider-row {
+  min-height: 32px;
+}
+
+.slider-icon {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #bcb4b4;
+  background-color: rgb(16.768627451%, 16.4392156863%, 16.4392156863%);
+}
+
+.slider-icon:hover {
+  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+}
+
+.slider-bar trough,
+.brightness-control-bar trough,
+.volume-control-bar trough,
+.settings-scale trough,
+.musicbar-widget trough {
+  background-color: rgb(29.0588235294%, 28.6274509804%, 28.6274509804%);
+  border-radius: 6px;
+  min-height: 8px;
+  min-width: 80px;
+  margin: 0;
+}
+
+.slider-bar highlight,
+.brightness-control-bar highlight,
+.volume-control-bar highlight,
+.settings-scale highlight,
+.musicbar-widget highlight {
+  min-height: 8px;
+  background-color: rgb(71.5294117647%, 68.1568627451%, 68.1568627451%);
+  border-radius: 6px;
+}
+
+.musicbar-widget trough {
+  margin: 4px 0 6px 0;
+}
+
+.musicbar-widget highlight {
+  background-color: rgb(74%, 70.9803921569%, 70.9803921569%);
+}
+
+.quick-tile {
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #bcb4b4;
+  background-color: rgb(16.768627451%, 16.4392156863%, 16.4392156863%);
+}
+
+.quick-tile-on {
+  background-color: rgb(32.2745098039%, 31.2156862745%, 31.2156862745%);
+}
+
+.quick-tile:hover {
+  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+}
+
+.music-widget {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background-color: #282828;
+  color: #c3bebe;
+}
+
+.music-title {
+  font-size: 14px;
+  color: #c3bebe;
+}
+
+.artist-widget {
+  font-size: 12px;
+  color: #b5acac;
+  min-height: 14px;
+}
+
+.song-cover-art-widget {
+  background-size: cover;
+  background-position: center;
+  background-color: rgb(17.3098039216%, 16.8156862745%, 16.8156862745%);
+  min-height: 72px;
+  min-width: 72px;
+  margin: 0 14px 0 0;
+  border-radius: 12px;
+}
+
+.song-cover-glyph {
+  font-size: 22px;
+  color: #b5acac;
+}
+
+.prev-widget,
+.pause-widget,
+.next-widget {
+  font-size: 14px;
+  min-width: 24px;
+  min-height: 22px;
+  padding: 0;
+  color: #bcb4b4;
+}
+
+.prev-widget:hover,
+.pause-widget:hover,
+.next-widget:hover {
+  color: #c3bebe;
+}
+
+.resources {
+  background-color: #282828;
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+.meter {
+  min-height: 18px;
+}
+
+.meter-name {
+  min-width: 48px;
+  font-size: 12px;
+  color: #b5acac;
+}
+
+.meter-val {
+  min-width: 40px;
+  font-size: 12px;
+  color: #bcb4b4;
+}
+
+.meter-bar {
+  min-height: 8px;
+  padding: 0;
+  margin: 0;
+}
+
+.meter-bar trough {
+  min-height: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 6px;
+  background-color: rgb(33.9215686275%, 33.3333333333%, 33.3333333333%);
+}
+
+.meter-bar progress {
+  min-height: 8px;
+  margin: 0;
+  border-radius: 6px;
+}
+
+.meter-CPU progress {
+  background-color: #ada3a3;
+}
+
+.meter-TEMP progress {
+  background-color: #c3bebe;
+}
+
+.meter-MEM progress {
+  background-color: rgb(74%, 70.9803921569%, 70.9803921569%);
+}
+
+.meter-DSK progress {
+  background-color: rgb(40.137254902%, 36.1764705882%, 36.1764705882%);
+}
+
+.meter-BAT progress {
+  background-color: #b5acac;
+}
+
+.calendar-container {
+  padding: 12px;
+  border-radius: 14px;
+  background-color: #282828;
+  color: #c3bebe;
+}
+
+.calendar-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #bcb4b4;
+}
+
+.weekdays label {
+  color: #b5acac;
+}
+
+.calendar-grid .day {
+  min-width: 22px;
+  margin: 2px;
+}
+
+.calendar-grid .today {
+  color: #282828;
+  background-color: #bcb4b4;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.settings-panel {
+  background-color: #282828;
+  color: #c3bebe;
+  border-radius: 16px;
+  padding: 18px 20px 16px 20px;
+}
+
+.settings-title {
+  font-size: 20px;
+  color: #c3bebe;
+}
+
+.settings-hint {
+  font-size: 11px;
+  color: #b5acac;
+  margin-bottom: 4px;
+}
+
+.settings-name {
+  font-size: 13px;
+  color: #b5acac;
+}
+
+.settings-value {
+  font-size: 13px;
+  color: #bcb4b4;
+}
+
+.settings-scale trough {
+  min-width: 280px;
+  margin: 4px 0;
+}
+
+.settings-toggle {
+  background-color: rgb(17.0392156863%, 16.6274509804%, 16.6274509804%);
+  color: #bcb4b4;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.settings-toggle:hover {
+  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+  color: #c3bebe;
+}
+
+.window {
+  background-color: #282828;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.image-list-preview {
+  padding: 4px;
+  margin: 4px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+}
+
+.wp-section-head {
+  padding: 8px 8px 2px 8px;
+}
+
+.wp-section-title {
+  font-size: 13px;
+  color: #bcb4b4;
+}
+
+.image-container {
+  padding: 0;
+  margin: 0;
+  border-radius: 8px;
+}
+
+.image-container:hover {
+  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+}
+
+/*# sourceMappingURL=style.css.map */

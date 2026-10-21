@@ -15,7 +15,7 @@ palette = 13=#{{base16.base0e.default.hex_stripped}}
 palette = 14=#{{base16.base0c.default.hex_stripped}}
 palette = 15=#{{base16.base07.default.hex_stripped}}
 background = {{base16.base00.default.hex_stripped}}
-foreground = {{base16.base06.default.hex_stripped}}
+foreground = {{base16.base07.default.hex_stripped}}
 cursor-color = {{base16.base05.default.hex_stripped}}
 cursor-text = {{base16.base00.default.hex_stripped}}
 selection-background = {{base16.base02.default.hex_stripped}}

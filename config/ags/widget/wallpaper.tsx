@@ -1,6 +1,6 @@
 import GLib from "gi://GLib?version=2.0"
 import Gio from "gi://Gio?version=2.0"
-import { Astal, Gtk } from "ags/gtk4"
+import { Astal, Gdk, Gtk } from "ags/gtk4"
 import { With } from "ags"
 import app from "ags/gtk4/app"
 import { HOME, jsonPoll, script } from "../lib"
@@ -50,8 +50,18 @@ export function Wallpaper() {
             visible={false}
             exclusivity={Astal.Exclusivity.IGNORE}
             layer={Astal.Layer.OVERLAY}
-            keymode={Astal.Keymode.NONE}
+            keymode={Astal.Keymode.EXCLUSIVE}
             anchor={Astal.WindowAnchor.LEFT}
+            $={(self) => {
+                const keys = new Gtk.EventControllerKey()
+                keys.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
+                keys.connect("key-pressed", (_ctrl, keyval) => {
+                    if (keyval !== Gdk.KEY_Escape) return false
+                    self.visible = false
+                    return true
+                })
+                self.add_controller(keys)
+            }}
             marginLeft={64}
             widthRequest={310}
             heightRequest={height}
