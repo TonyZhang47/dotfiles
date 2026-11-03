@@ -78,3 +78,20 @@ end
 
 function fish_right_prompt
 end
+
+function update-all
+    echo "==> Updating Official Arch Packages..."
+    sudo pacman -Syu
+    echo "==> Updating AUR Packages..."
+    yay -Syu --noconfirm
+    echo "==> Updating Flatpaks..."
+    flatpak update -y
+    echo "==> Checking Firmware & BIOS Updates..."
+    fwupdmgr refresh
+    fwupdmgr update -y
+    echo "==> Updating Cargo Packages..."
+    cargo install-update -a
+    echo "==> Cleaning Package Cache..."
+    paccache -r
+    echo "==> System Update Complete!"
+end

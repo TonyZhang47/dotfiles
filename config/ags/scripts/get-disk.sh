@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-printf "%.0f\n" "$(df --output=pcent / | tail -n1 | tr -dc '0-9')"
+target="${1:-/}"
+printf "%.0f\n" "$(df --output=pcent "$target" | tail -n1 | tr -dc '0-9')"
 

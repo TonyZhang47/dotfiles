@@ -13,10 +13,9 @@ box.controls,
 box.music-widget,
 box.resources,
 box.calendar-container,
-box.settings-panel,
 box.window {
-  background-color: #282828;
-  color: #c3bebe;
+  background-color: #2e2f3f;
+  color: #ccc9ce;
   opacity: 1;
 }
 
@@ -41,8 +40,8 @@ box.window {
 }
 
 .dash-card {
-  background-color: #282828;
-  color: #c3bebe;
+  background-color: #2e2f3f;
+  color: #ccc9ce;
   border-radius: 16px;
   padding: 14px 16px;
 }
@@ -59,19 +58,19 @@ box.window {
 
 .dash-clock-time {
   font-size: 32px;
-  color: #c3bebe;
+  color: #ccc9ce;
   font-weight: 700;
 }
 
 .dash-clock-day {
   font-size: 14px;
-  color: #b5acac;
+  color: #bcb6bf;
   margin-top: 2px;
 }
 
 .dash-clock-date {
   font-size: 12px;
-  color: #b5acac;
+  color: #bcb6bf;
 }
 
 .dash-uptime-inline {
@@ -80,12 +79,12 @@ box.window {
 
 .dash-uptime-icon {
   font-size: 28px;
-  color: #bcb4b4;
+  color: #c3bec6;
 }
 
 .dash-uptime-h {
   font-size: 14px;
-  color: #bcb4b4;
+  color: #c3bec6;
 }
 
 .dash-power {
@@ -99,28 +98,28 @@ box.window {
   padding: 0;
   margin: 0;
   border-radius: 14px;
-  background-color: rgb(21.0980392157%, 19.8039215686%, 19.8039215686%);
-  color: #c3bebe;
+  background-color: rgb(21.6862745098%, 22.1960784314%, 29.6470588235%);
+  color: #ccc9ce;
 }
 
 .dash-power-lock {
-  color: #c3bebe;
+  color: #ccc9ce;
 }
 
 .dash-power-sleep {
-  color: #bcb4b4;
+  color: #c3bec6;
 }
 
 .dash-power-reboot {
-  color: #b5acac;
+  color: #bcb6bf;
 }
 
 .dash-power-off {
-  color: #c3bebe;
+  color: #ccc9ce;
 }
 
 .dash-power-btn:hover {
-  background-color: rgb(39.1568627451%, 37.3921568627%, 37.3921568627%);
+  background-color: rgb(41.5098039216%, 40.4901960784%, 46.0588235294%);
 }
 
 .dash-weather-icon {
@@ -129,24 +128,24 @@ box.window {
 
 .dash-weather-temp {
   font-size: 30px;
-  color: #bcb4b4;
+  color: #c3bec6;
   font-weight: 700;
 }
 
 .dash-weather-city {
   font-size: 13px;
-  color: #bcb4b4;
+  color: #c3bec6;
   margin-top: 4px;
 }
 
 .dash-weather-text {
   font-size: 13px;
-  color: #b5acac;
+  color: #bcb6bf;
 }
 
 .dash-weather-c {
   font-size: 11px;
-  color: #b5acac;
+  color: #bcb6bf;
   margin-top: 2px;
 }
 
@@ -159,39 +158,39 @@ box.window {
   min-height: 32px;
   padding: 0;
   border-radius: 8px;
-  color: #b5acac;
+  color: #bcb6bf;
   background-color: transparent;
 }
 
 .dash-ws.empty {
-  color: #ada3a3;
+  color: #b3acb8;
 }
 
 .dash-ws.occupied {
-  color: #b5acac;
+  color: #bcb6bf;
 }
 
 .dash-ws:hover {
-  color: #bcb4b4;
-  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+  color: #c3bec6;
+  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
 }
 
 .dash-ws.active {
-  background-color: #c3bebe;
-  color: #282828;
+  background-color: #ccc9ce;
+  color: #2e2f3f;
   font-weight: 700;
 }
 
 .dash-folder {
   padding: 3px 4px;
   border-radius: 6px;
-  color: #b5acac;
+  color: #bcb6bf;
   font-size: 13px;
 }
 
 .dash-folder:hover {
-  color: #c3bebe;
-  background-color: rgb(17.4901960784%, 16.9411764706%, 16.9411764706%);
+  color: #ccc9ce;
+  background-color: rgb(19.2941176471%, 19.6862745098%, 26.3529411765%);
 }
 
 .dash-mid-col {
@@ -199,7 +198,7 @@ box.window {
 }
 
 .controls {
-  background-color: #282828;
+  background-color: #2e2f3f;
   padding: 14px 16px;
   border-radius: 16px;
 }
@@ -214,20 +213,19 @@ box.window {
   padding: 0;
   border-radius: 10px;
   font-size: 16px;
-  color: #bcb4b4;
-  background-color: rgb(16.768627451%, 16.4392156863%, 16.4392156863%);
+  color: #c3bec6;
+  background-color: rgb(18.7921568627%, 19.1843137255%, 25.6941176471%);
 }
 
 .slider-icon:hover {
-  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
 }
 
 .slider-bar trough,
 .brightness-control-bar trough,
 .volume-control-bar trough,
-.settings-scale trough,
 .musicbar-widget trough {
-  background-color: rgb(29.0588235294%, 28.6274509804%, 28.6274509804%);
+  background-color: rgb(31.6705882353%, 31.7176470588%, 37.0431372549%);
   border-radius: 6px;
   min-height: 8px;
   min-width: 80px;
@@ -237,10 +235,9 @@ box.window {
 .slider-bar highlight,
 .brightness-control-bar highlight,
 .volume-control-bar highlight,
-.settings-scale highlight,
 .musicbar-widget highlight {
   min-height: 8px;
-  background-color: rgb(71.5294117647%, 68.1568627451%, 68.1568627451%);
+  background-color: rgb(74.3529411765%, 72.1176470588%, 75.4901960784%);
   border-radius: 6px;
 }
 
@@ -249,7 +246,7 @@ box.window {
 }
 
 .musicbar-widget highlight {
-  background-color: rgb(74%, 70.9803921569%, 70.9803921569%);
+  background-color: rgb(76.8235294118%, 74.9411764706%, 77.9607843137%);
 }
 
 .quick-tile {
@@ -258,40 +255,40 @@ box.window {
   padding: 0;
   border-radius: 10px;
   font-size: 16px;
-  color: #bcb4b4;
-  background-color: rgb(16.768627451%, 16.4392156863%, 16.4392156863%);
+  color: #c3bec6;
+  background-color: rgb(18.7921568627%, 19.1843137255%, 25.6941176471%);
 }
 
 .quick-tile-on {
-  background-color: rgb(32.2745098039%, 31.2156862745%, 31.2156862745%);
+  background-color: rgb(34.7450980392%, 34.3137254902%, 39.7647058824%);
 }
 
 .quick-tile:hover {
-  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
 }
 
 .music-widget {
   padding: 14px 16px;
   border-radius: 16px;
-  background-color: #282828;
-  color: #c3bebe;
+  background-color: #2e2f3f;
+  color: #ccc9ce;
 }
 
 .music-title {
   font-size: 14px;
-  color: #c3bebe;
+  color: #ccc9ce;
 }
 
 .artist-widget {
   font-size: 12px;
-  color: #b5acac;
+  color: #bcb6bf;
   min-height: 14px;
 }
 
 .song-cover-art-widget {
   background-size: cover;
   background-position: center;
-  background-color: rgb(17.3098039216%, 16.8156862745%, 16.8156862745%);
+  background-color: rgb(19.168627451%, 19.5607843137%, 26.1882352941%);
   min-height: 72px;
   min-width: 72px;
   margin: 0 14px 0 0;
@@ -300,7 +297,7 @@ box.window {
 
 .song-cover-glyph {
   font-size: 22px;
-  color: #b5acac;
+  color: #bcb6bf;
 }
 
 .prev-widget,
@@ -310,17 +307,17 @@ box.window {
   min-width: 24px;
   min-height: 22px;
   padding: 0;
-  color: #bcb4b4;
+  color: #c3bec6;
 }
 
 .prev-widget:hover,
 .pause-widget:hover,
 .next-widget:hover {
-  color: #c3bebe;
+  color: #ccc9ce;
 }
 
 .resources {
-  background-color: #282828;
+  background-color: #2e2f3f;
   padding: 14px 16px;
   border-radius: 16px;
 }
@@ -332,13 +329,13 @@ box.window {
 .meter-name {
   min-width: 48px;
   font-size: 12px;
-  color: #b5acac;
+  color: #bcb6bf;
 }
 
 .meter-val {
   min-width: 40px;
   font-size: 12px;
-  color: #bcb4b4;
+  color: #c3bec6;
 }
 
 .meter-bar {
@@ -353,7 +350,7 @@ box.window {
   margin: 0;
   padding: 0;
   border-radius: 6px;
-  background-color: rgb(33.9215686275%, 33.3333333333%, 33.3333333333%);
+  background-color: rgb(36.6274509804%, 36.5490196078%, 41.5294117647%);
 }
 
 .meter-bar progress {
@@ -363,40 +360,44 @@ box.window {
 }
 
 .meter-CPU progress {
-  background-color: #ada3a3;
+  background-color: #b3acb8;
 }
 
 .meter-TEMP progress {
-  background-color: #c3bebe;
+  background-color: #ccc9ce;
 }
 
 .meter-MEM progress {
-  background-color: rgb(74%, 70.9803921569%, 70.9803921569%);
+  background-color: rgb(76.8235294118%, 74.9411764706%, 77.9607843137%);
 }
 
 .meter-DSK progress {
-  background-color: rgb(40.137254902%, 36.1764705882%, 36.1764705882%);
+  background-color: #c3bec6;
+}
+
+.meter-HOME progress {
+  background-color: #b3acb8;
 }
 
 .meter-BAT progress {
-  background-color: #b5acac;
+  background-color: #bcb6bf;
 }
 
 .calendar-container {
   padding: 12px;
   border-radius: 14px;
-  background-color: #282828;
-  color: #c3bebe;
+  background-color: #2e2f3f;
+  color: #ccc9ce;
 }
 
 .calendar-title {
   font-size: 20px;
   font-weight: bold;
-  color: #bcb4b4;
+  color: #c3bec6;
 }
 
 .weekdays label {
-  color: #b5acac;
+  color: #bcb6bf;
 }
 
 .calendar-grid .day {
@@ -405,61 +406,15 @@ box.window {
 }
 
 .calendar-grid .today {
-  color: #282828;
-  background-color: #bcb4b4;
+  color: #2e2f3f;
+  background-color: #c3bec6;
   border-radius: 6px;
   font-weight: bold;
   padding: 2px;
 }
 
-.settings-panel {
-  background-color: #282828;
-  color: #c3bebe;
-  border-radius: 16px;
-  padding: 18px 20px 16px 20px;
-}
-
-.settings-title {
-  font-size: 20px;
-  color: #c3bebe;
-}
-
-.settings-hint {
-  font-size: 11px;
-  color: #b5acac;
-  margin-bottom: 4px;
-}
-
-.settings-name {
-  font-size: 13px;
-  color: #b5acac;
-}
-
-.settings-value {
-  font-size: 13px;
-  color: #bcb4b4;
-}
-
-.settings-scale trough {
-  min-width: 280px;
-  margin: 4px 0;
-}
-
-.settings-toggle {
-  background-color: rgb(17.0392156863%, 16.6274509804%, 16.6274509804%);
-  color: #bcb4b4;
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 13px;
-}
-
-.settings-toggle:hover {
-  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
-  color: #c3bebe;
-}
-
 .window {
-  background-color: #282828;
+  background-color: #2e2f3f;
   padding: 8px;
   border-radius: 12px;
 }
@@ -478,7 +433,7 @@ box.window {
 
 .wp-section-title {
   font-size: 13px;
-  color: #bcb4b4;
+  color: #c3bec6;
 }
 
 .image-container {
@@ -488,7 +443,7 @@ box.window {
 }
 
 .image-container:hover {
-  background-color: rgb(18.3921568627%, 17.568627451%, 17.568627451%);
+  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
 }
 
 /*# sourceMappingURL=style.css.map */

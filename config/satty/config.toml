@@ -11,10 +11,10 @@ style = "Regular"
 
 [color-palette]
 palette = [
-  "#c3bebe",
-  "#bcb4b4",
-  "#b5acac",
-  "#69cb97",
-  "#eccae2",
-  "#dda69f",
+  "#ccc9ce",
+  "#c3bec6",
+  "#bcb6bf",
+  "#80d3a7",
+  "#f1d7e9",
+  "#e2b2ac",
 ]

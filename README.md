@@ -28,7 +28,7 @@ During a full install the script also asks three questions:
 
 1. **Chaotic-AUR.** AGS's libraries and Spotify are installed from Chaotic-AUR on the machine this rice came from. Saying yes adds that repo. Saying no builds the same packages with `yay`.
 2. **Keyboard.** The binds below are Dvorak. You can keep that or switch Hyprland to US QWERTY.
-3. **Monitor.** The author's panel is `2880x1800@120` at scale `1.5`. Other machines should take the preferred mode.
+3. **Monitor.** The author's panel starts at `2880x1800@60`, scale `1.5`. On that laptop, plugging in power switches the built-in screen to 120 Hz. Other machines should take the preferred mode.
 
 An optional prompt can install a CPU-boost-off tweak written for an ASUS laptop. Leave that off unless you want it.
 
@@ -49,7 +49,7 @@ Spotify's login and editor, browser, and git profiles are not in this repo. A fu
 | Piece | Choice |
 | --- | --- |
 | Window manager | Hyprland, configured in Lua. Dwindle layout, blur, gaps, rounded corners |
-| Overlays | AGS: control center, settings, wallpaper picker |
+| Overlays | AGS: control center and wallpaper picker |
 | Terminal | Kitty, JetBrainsMono Nerd Font |
 | Launcher | Rofi |
 | Files | Nemo (`Super+E`). Thunar config is included as well |
@@ -120,7 +120,6 @@ Dvorak is the layout these letters assume. If the installer switched you to QWER
 | `Super+Space` | Rofi app launcher |
 | `Super+Shift+Space` | Rofi run |
 | `Super+C` | Control center |
-| `Super+H` | Settings (gaps, blur, opacity, and the rest) |
 | `Super+Shift+T` | Wallpaper picker |
 | `Super+L` | Lock |
 | `Super+S` | Screenshot region to the clipboard |
@@ -155,7 +154,7 @@ Hyprland/
 │   ├── wallpapers/         # pictures the picker shows
 │   └── systemd/user/       # wallpaper previews and hyprsunset
 ├── home/.gtkrc-2.0         # GTK 2 theme
-├── local-bin/              # ags wrapper and the Spotify launcher
+├── local-bin/              # ags wrapper, Spotify launcher, hyprsunset
 ├── local-share/fonts/      # Comfortaa, used on the lock screen
 └── install.sh
 ```

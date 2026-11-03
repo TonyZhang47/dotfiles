@@ -264,10 +264,11 @@ copy_configs() {
   mkdir -p "$HOME/.local/bin" "$HOME/.local/share/fonts"
   cp -a "$ROOT/local-bin/ags" "$HOME/.local/bin/ags"
   cp -a "$ROOT/local-bin/spotify" "$HOME/.local/bin/spotify"
+  cp -a "$ROOT/local-bin/hyprsunset" "$HOME/.local/bin/hyprsunset"
   cp -a "$ROOT/local-share/fonts/." "$HOME/.local/share/fonts/"
   rewrite_home
   tune_hyprland
-  chmod +x "$HOME/.local/bin/ags" "$HOME/.local/bin/spotify"
+  chmod +x "$HOME/.local/bin/ags" "$HOME/.local/bin/spotify" "$HOME/.local/bin/hyprsunset"
   find "$HOME/.config/ags/scripts" "$HOME/.config/hypr/scripts" "$HOME/.config/rice" \
     -type f \( -name '*.sh' -o -name '*.py' \) -exec chmod +x {} +
   command -v fc-cache >/dev/null && fc-cache -f >/dev/null || true
@@ -312,10 +313,11 @@ tune_hyprland() {
     echo "Hyprland keyboard variant set to US QWERTY."
   fi
   echo
-  echo "Monitor: the author's panel is 2880x1800 @ 120Hz, scale 1.5."
+  echo "Monitor: the author's panel starts at 2880x1800 @ 60Hz, scale 1.5."
+  echo "On that laptop, plugging in power switches the built-in panel to 120 Hz."
   if confirm "Use this display's preferred mode and scale 1 instead?" y; then
     sed -i \
-      -e 's/mode     = "2880x1800@120"/mode     = "preferred"/' \
+      -e 's/mode     = "2880x1800@60"/mode     = "preferred"/' \
       -e 's/scale    = "1.5"/scale    = "1"/' \
       "$file"
     echo "Monitor set to preferred mode, scale 1. Edit ~/.config/hypr/hyprland.lua if the picture is the wrong size."
@@ -364,7 +366,7 @@ Run fish, or change it with:  chsh -s /usr/bin/fish
 
 Super+comma opens Kitty. Super+E opens Nemo. Super+Space opens Rofi.
 Super+Shift+T picks a wallpaper. Wallpapers live in ~/.config/wallpapers.
-Super+C is the control center. Super+H is settings. Super+L locks.
+Super+C is the control center. Super+L locks.
 
 The binds are written for Dvorak unless you switched the layout during install.
 EOF

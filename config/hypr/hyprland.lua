@@ -14,10 +14,11 @@
 ---- MONITORS ----
 ------------------
 
--- See https://wiki.hypr.land/configuring/core/monitors/
+-- Startup mode. on-power-source.sh moves this panel to 60 Hz on battery
+-- and back to 120 Hz while charging.
 hl.monitor({
     output   = "",
-    mode     = "2880x1800@120",
+    mode     = "2880x1800@60",
     position = "auto",
     scale    = "1.5",
 })
@@ -65,7 +66,7 @@ hl.on("hyprland.start", function ()
 --wallpaper
 hl.exec_cmd("awww-daemon > /dev/null 2>&1 &")
 hl.exec_cmd("/home/ping/.config/ags/scripts/restore-wallpaper.sh")
--- AGS draws the control-center, settings, and wallpaper picker overlays.
+-- AGS draws the control-center and wallpaper picker overlays.
 hl.exec_cmd("setsid -f /home/ping/.config/ags/scripts/ensure-ags.sh >/dev/null 2>&1")
 
 hl.exec_cmd("playerctld daemon")
@@ -118,39 +119,15 @@ hl.env("PATH", "/home/ping/.local/bin:" .. (os.getenv("PATH") or "/usr/bin"))
 -----------------------
 
 -- Refer to https://wiki.hypr.land/configuring/core/config-options/
--- Live Super+H settings. Defaults match the rice; ~/.config/hypr/user-settings.lua
--- overrides them so you do not have to edit this file.
-local user = {
-    sensitivity = 0.5,
-    scroll_factor = 0.2,
-    gaps_in = 18,
-    gaps_out = 18,
-    rounding = 14,
-    inactive_opacity = 0.9,
-    animations = true,
-    accel_profile = "flat",
-}
-do
-    local chunk = loadfile("/home/ping/.config/hypr/user-settings.lua")
-    if type(chunk) == "function" then
-        local ok, data = pcall(chunk)
-        if ok and type(data) == "table" then
-            for k, v in pairs(data) do
-                user[k] = v
-            end
-        end
-    end
-end
-
 -- Zenities look. Keybinds below are unchanged.
 hl.config({
     general = {
         -- Hyprland adds gaps_in on both sides of a split, so the visible
-        -- gutter is twice the value. Store and show the visible size.
-        gaps_in  = math.floor(user.gaps_in / 2),
-        gaps_out = user.gaps_out,
+        -- gutter is twice this value (18px).
+        gaps_in  = 9,
+        gaps_out = 18,
         -- Floating windows use the same outer gap. Real fullscreen ignores it.
-        float_gaps = user.gaps_out,
+        float_gaps = 18,
 
         border_size = 0,
 
@@ -163,10 +140,10 @@ hl.config({
     },
 
     decoration = {
-        rounding = user.rounding,
+        rounding = 14,
 
         active_opacity   = 1.0,
-        inactive_opacity = user.inactive_opacity,
+        inactive_opacity = 0.9,
 
         blur = {
             enabled         = true,
@@ -187,10 +164,13 @@ hl.config({
 
     cursor = {
         no_hardware_cursors = true,
+        -- Software cursor otherwise updates at 24 Hz while the panel
+        -- settles after boot or a refresh-rate change.
+        min_refresh_rate = 120,
     },
 
     animations = {
-        enabled = user.animations,
+        enabled = true,
     },
 })
 
@@ -260,7 +240,10 @@ hl.config({
         disable_hyprland_logo   = true,
         disable_splash_rendering = true,
         key_press_enables_dpms = true,
-        vrr = 1,
+        -- Fullscreen only. Always-on VRR lets the desktop drop its
+        -- refresh for a few seconds after a mode change, which makes
+        -- the pointer and scrolling feel slow.
+        vrr = 2,
     },
 })
 
@@ -280,12 +263,12 @@ repeat_rate = 25,
 repeat_delay = 300,
         follow_mouse = 1,
 
-        sensitivity = user.sensitivity, -- -1.0 - 1.0, 0 means no modification.
-        accel_profile = user.accel_profile,
+        sensitivity = 1.0, -- -1.0 to 1.0. 0 leaves the speed alone.
+        accel_profile = "flat",
         force_no_accel = false,
         touchpad = {
             natural_scroll = false,
-            scroll_factor = user.scroll_factor,
+            scroll_factor = 0.2,
         },
     },
 })
@@ -352,9 +335,6 @@ hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/tog
 
 -- Show or hide the right-side control center.
 hl.bind("SUPER + C", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle.sh control-center"))
-
--- Settings popup (cursor, gaps, rounding). Values persist outside this file.
-hl.bind("SUPER + H", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle.sh settings"))
 
 -- Clipboard history. Super+V is still focus-down.
 hl.bind("SUPER + CTRL + V", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/clip-history.py pick"))

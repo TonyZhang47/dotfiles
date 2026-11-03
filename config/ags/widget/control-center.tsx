@@ -50,8 +50,10 @@ const memory = numPoll(0, 10000, `"${SCRIPTS}/get-memory.sh"`)
 const memoryDetail = strPoll("0", 10000, `"${SCRIPTS}/get-memory-detail.sh"`)
 const temp = numPoll(0, 10000, `"${SCRIPTS}/get-temperature.sh"`)
 const cpu = numPoll(0, 10000, `"${SCRIPTS}/get-cpu.sh"`)
-const disk = numPoll(0, 60000, `"${SCRIPTS}/get-disk.sh"`)
-const diskDetail = strPoll("0", 60000, `"${SCRIPTS}/get-disk-detail.sh"`)
+const disk = numPoll(0, 60000, `"${SCRIPTS}/get-disk.sh" /`)
+const diskDetail = strPoll("0", 60000, `"${SCRIPTS}/get-disk-detail.sh" /`)
+const home = numPoll(0, 60000, `"${SCRIPTS}/get-disk.sh" /home`)
+const homeDetail = strPoll("0", 60000, `"${SCRIPTS}/get-disk-detail.sh" /home`)
 const seek = numPoll(0, 1000, `"${SCRIPTS}/get-music-seek.sh"`)
 const bluetooth = strPoll("󰂯", 5000, `"${SCRIPTS}/get-bluetooth-status.sh"`)
 const wifi = strPoll("󰤨", 5000, `"${SCRIPTS}/get-network-strength.sh"`)
@@ -501,6 +503,7 @@ export function ControlCenter() {
                             />
                             <Meter name="MEM" value={memory} unit="%" tooltip={memoryDetail} />
                             <Meter name="DSK" value={disk} unit="%" tooltip={diskDetail} />
+                            <Meter name="HOME" value={home} unit="%" tooltip={homeDetail} />
                             <Meter name="BAT" value={battery} unit="%" tooltip={timeLeft} />
                         </box>
                     </box>

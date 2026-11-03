@@ -12,28 +12,39 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.opt.clipboard = "unnamedplus"
 
+-- Layout is us(dvorak). In Normal, Visual, and Operator-pending mode, treat each
+-- key as the QWERTY key in that position. Insert mode and the command line stay Dvorak.
+local dvorak_to_qwerty = {
+  ["'"] = "q", [","] = "w", ["."] = "e", p = "r", y = "t",
+  f = "y", g = "u", c = "i", r = "o", l = "p",
+  ["/"] = "[", ["="] = "]", ["["] = "-", ["]"] = "=",
+  o = "s", e = "d", u = "f", i = "g", d = "h",
+  h = "j", t = "k", n = "l", s = ";", ["-"] = "'",
+  [";"] = "z", q = "x", j = "c", k = "v", x = "b",
+  b = "n", w = ",", v = ".", z = "/",
+  ['"'] = "Q", ["<"] = "W", [">"] = "E", P = "R", Y = "T",
+  F = "Y", G = "U", C = "I", R = "O", L = "P",
+  ["?"] = "{", ["+"] = "}", ["{"] = "_", ["}"] = "+",
+  O = "S", E = "D", U = "F", I = "G", D = "H",
+  H = "J", T = "K", N = "L", S = ":", ["_"] = '"',
+  [":"] = "Z", Q = "X", J = "C", K = "V", X = "B",
+  B = "N", W = "<", V = ">", Z = "?",
+}
+
+local from, to = {}, {}
+for src, dst in pairs(dvorak_to_qwerty) do
+  table.insert(from, src)
+  table.insert(to, dst)
+end
+
+local function langmap_escape(text)
+  return text:gsub('[;,"\\|]', "\\%0")
+end
+
+vim.opt.langmap = langmap_escape(table.concat(from)) .. ";" .. langmap_escape(table.concat(to))
+vim.opt.langremap = false
+
 vim.keymap.set('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
-
--- Movement remaps (Normal, Visual, Operator-pending modes)
-vim.keymap.set({'n', 'v', 'o'}, 'n', 'j', { noremap = true })  -- Down
-vim.keymap.set({'n', 'v', 'o'}, 'e', 'k', { noremap = true })  -- Up
-vim.keymap.set({'n', 'v', 'o'}, 'i', 'l', { noremap = true })  -- Right
-
--- Search Next Previous
-vim.keymap.set('n', 'k', 'n', { noremap = true })  -- Search next
-vim.keymap.set('n', 'K', 'N', { noremap = true })  -- Search previous
-
--- Insert mode adjustments
-vim.keymap.set('n', 'u', 'i', { noremap = true })  -- Insert mode
-vim.keymap.set('n', 'U', 'I', { noremap = true })  -- Insert at beginning
-
--- Undo & redo
-vim.keymap.set('n', 'j', 'u', { noremap = true })  -- Undo
-vim.keymap.set('n', 'J', '<C-r>', { noremap = true })  -- Redo
-
--- Open new lines
-vim.keymap.set('n', 'y', 'o', { noremap = true })  -- Open new line below
-vim.keymap.set('n', 'Y', 'O', { noremap = true })  -- Open new line above
 
 require("vim-options")
 require("lazy").setup("plugins")

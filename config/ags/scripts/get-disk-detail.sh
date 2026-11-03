@@ -1,4 +1,4 @@
 #!/bin/bash
-
-df -h --output=avail / | tail -n1 | awk '{print $1}'
+target="${1:-/}"
+df -h --output=avail "$target" | tail -n1 | awk '{print $1 " free"}'
 

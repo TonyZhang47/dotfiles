@@ -21,11 +21,11 @@ noise_reduction = 77
 
 [color]
 gradient = 1
-gradient_color_1 = '#6dbfcc'
-gradient_color_2 = '#b0c5e3'
-gradient_color_3 = '#eccae2'
-gradient_color_4 = '#c3bebe'
-gradient_color_5 = '#c9b265'
-gradient_color_6 = '#d5ab86'
-gradient_color_7 = '#dfa3ad'
-gradient_color_8 = '#dda69f'
+gradient_color_1 = '#83c8d3'
+gradient_color_2 = '#becfe8'
+gradient_color_3 = '#f1d7e9'
+gradient_color_4 = '#ccc9ce'
+gradient_color_5 = '#d1bc7b'
+gradient_color_6 = '#dab797'
+gradient_color_7 = '#e3b0b8'
+gradient_color_8 = '#e2b2ac'

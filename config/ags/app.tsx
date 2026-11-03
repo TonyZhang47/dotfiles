@@ -5,10 +5,9 @@ import { exec } from "ags/process"
 import { monitorFile, readFile, writeFile } from "ags/file"
 import { CONFIG } from "./lib"
 import { ControlCenter } from "./widget/control-center"
-import { Settings } from "./widget/settings"
 import { Wallpaper } from "./widget/wallpaper"
 
-const WINDOWS = ["control-center", "settings", "wallpaper"] as const
+const WINDOWS = ["control-center", "wallpaper"] as const
 const RUN = GLib.get_user_runtime_dir()
 const TOGGLE = `${RUN}/ags-toggle`
 const READY = `${RUN}/ags-ready`
@@ -63,7 +62,6 @@ app.start({
         compileCss()
         monitorFile(`${CONFIG}/colors.scss`, () => compileCss())
         ControlCenter()
-        Settings()
         Wallpaper()
         try {
             writeFile(TOGGLE, ".\n")

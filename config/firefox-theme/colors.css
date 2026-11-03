@@ -1,9 +1,9 @@
 :root {
-  --rice-bg: #282828;
-  --rice-bg-2: #3f3838;
-  --rice-bg-3: #4c4444;
-  --rice-muted: #ada3a3;
-  --rice-fg: #c3bebe;
-  --rice-accent: #bcb4b4;
-  --rice-border: #564b4b;
+  --rice-bg: #2e2f3f;
+  --rice-bg-2: #3e3f54;
+  --rice-bg-3: #494b64;
+  --rice-muted: #b3acb8;
+  --rice-fg: #ccc9ce;
+  --rice-accent: #c3bec6;
+  --rice-border: #4d4f69;
 }
