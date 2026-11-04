@@ -2,7 +2,6 @@ import { Astal, Gdk, Gtk } from "ags/gtk4"
 import { With } from "ags"
 import app from "ags/gtk4/app"
 import { IconBtn } from "./icon"
-import { Calendar } from "./calendar"
 import {
     EMPTY_WORKSPACES,
     HOME,
@@ -14,23 +13,11 @@ import {
     run,
     script,
     strPoll,
-    type Clock,
     type Uptime,
-    type Weather,
     type WorkspaceState,
 } from "../lib"
 
-const clock = jsonPoll<Clock>(
-    { hms: "--:--:--", day: "", date: "" },
-    1000,
-    `"${SCRIPTS}/panel-clock.sh"`,
-)
 const uptime = jsonPoll<Uptime>({ hours: 0, mins: 0 }, 15000, `"${SCRIPTS}/panel-uptime.sh"`)
-const weather = jsonPoll<Weather>(
-    { icon: "☁", temp: "--", temp_c: "--", text: "", city: "Baltimore" },
-    60000,
-    `python3 "${SCRIPTS}/panel-weather.py"`,
-)
 const workspaces = follow(JSON.stringify(EMPTY_WORKSPACES), `"${SCRIPTS}/bar-workspaces.py"`)
 const volume = numPoll(
     0,
@@ -46,12 +33,7 @@ const idle = boolPoll(false, 2000, `"${SCRIPTS}/get-hypridle-status.sh"`)
 const warm = boolPoll(true, 1000, `"${SCRIPTS}/get-warm-light.sh"`)
 const battery = numPoll(0, 3000, `"${SCRIPTS}/get-battery.sh"`)
 const timeLeft = strPoll("0", 15000, `"${SCRIPTS}/get-time-left.sh"`)
-const memory = numPoll(0, 10000, `"${SCRIPTS}/get-memory.sh"`)
-const memoryDetail = strPoll("0", 10000, `"${SCRIPTS}/get-memory-detail.sh"`)
 const temp = numPoll(0, 10000, `"${SCRIPTS}/get-temperature.sh"`)
-const cpu = numPoll(0, 10000, `"${SCRIPTS}/get-cpu.sh"`)
-const disk = numPoll(0, 60000, `"${SCRIPTS}/get-disk.sh" /`)
-const diskDetail = strPoll("0", 60000, `"${SCRIPTS}/get-disk-detail.sh" /`)
 const home = numPoll(0, 60000, `"${SCRIPTS}/get-disk.sh" /home`)
 const homeDetail = strPoll("0", 60000, `"${SCRIPTS}/get-disk-detail.sh" /home`)
 const seek = numPoll(0, 1000, `"${SCRIPTS}/get-music-seek.sh"`)
@@ -88,7 +70,6 @@ function Meter({
             cssClasses={["meter"]}
             tooltipText={tooltip}
             hexpand
-            vexpand
             valign={Gtk.Align.CENTER}
             spacing={10}
         >
@@ -133,123 +114,39 @@ export function ControlCenter() {
                 orientation={Gtk.Orientation.VERTICAL}
                 spacing={10}
             >
-                <box spacing={10} hexpand>
-                    <box
-                        cssClasses={["dash-card", "dash-clock"]}
-                        orientation={Gtk.Orientation.VERTICAL}
-                        hexpand
-                        vexpand
-                    >
+                <box cssClasses={["dash-card", "dash-top"]} spacing={12}>
+                    <box cssClasses={["dash-uptime-inline"]} spacing={8} hexpand valign={Gtk.Align.CENTER}>
+                        <label cssClasses={["dash-uptime-icon"]} label="󰔛" />
                         <label
-                            cssClasses={["dash-clock-time"]}
-                            halign={Gtk.Align.START}
-                            label={clock((c) => c.hms)}
+                            cssClasses={["dash-uptime-h"]}
+                            label={uptime((u) => `${u.hours}h ${u.mins}m`)}
                         />
-                        <label
-                            cssClasses={["dash-clock-day"]}
-                            halign={Gtk.Align.START}
-                            label={clock((c) => c.day)}
-                        />
-                        <label
-                            cssClasses={["dash-clock-date"]}
-                            halign={Gtk.Align.START}
-                            label={clock((c) => c.date)}
-                        />
-                        <box
-                            cssClasses={["dash-uptime-inline"]}
-                            spacing={8}
-                            valign={Gtk.Align.END}
-                            vexpand
-                        >
-                            <label cssClasses={["dash-uptime-icon"]} label="󰔛" />
-                            <label
-                                cssClasses={["dash-uptime-h"]}
-                                label={uptime((u) => `${u.hours}h ${u.mins}m`)}
-                            />
-                        </box>
                     </box>
-                    <button
-                        hexpand
-                        vexpand
-                        tooltipText="Baltimore forecast"
-                        onClicked={() => script("open-weather.sh")}
-                    >
-                        <box
-                            cssClasses={["dash-card", "dash-weather"]}
-                            orientation={Gtk.Orientation.VERTICAL}
-                            hexpand
-                            vexpand
-                        >
-                            <box>
-                                <label cssClasses={["dash-weather-icon"]} label={weather((w) => w.icon)} />
-                                <label
-                                    cssClasses={["dash-weather-temp"]}
-                                    hexpand
-                                    halign={Gtk.Align.END}
-                                    label={weather((w) => w.temp)}
-                                />
-                            </box>
-                            <label
-                                cssClasses={["dash-weather-city"]}
-                                halign={Gtk.Align.START}
-                                label={weather((w) => w.city)}
-                            />
-                            <label
-                                cssClasses={["dash-weather-text"]}
-                                halign={Gtk.Align.START}
-                                ellipsize={3}
-                                label={weather((w) => w.text)}
-                            />
-                            <label
-                                cssClasses={["dash-weather-c"]}
-                                halign={Gtk.Align.START}
-                                vexpand
-                                valign={Gtk.Align.END}
-                                label={weather((w) => w.temp_c)}
-                            />
-                        </box>
-                    </button>
-                    <box
-                        cssClasses={["dash-card", "dash-power"]}
-                        orientation={Gtk.Orientation.VERTICAL}
-                        spacing={8}
-                    >
-                        <box spacing={8} hexpand vexpand>
-                            <IconBtn
-                                class="dash-power-btn dash-power-lock"
-                                tooltip="Lock"
-                                icon=""
-                                hexpand
-                                vexpand
-                                onClicked={() => script("lock.sh")}
-                            />
-                            <IconBtn
-                                class="dash-power-btn dash-power-sleep"
-                                tooltip="Sleep"
-                                icon="󰒲"
-                                hexpand
-                                vexpand
-                                onClicked={() => run(["systemctl", "suspend"])}
-                            />
-                        </box>
-                        <box spacing={8} hexpand vexpand>
-                            <IconBtn
-                                class="dash-power-btn dash-power-reboot"
-                                tooltip="Reboot"
-                                icon="󰜉"
-                                hexpand
-                                vexpand
-                                onClicked={() => run(["systemctl", "reboot"])}
-                            />
-                            <IconBtn
-                                class="dash-power-btn dash-power-off"
-                                tooltip="Shut down"
-                                icon="󰐥"
-                                hexpand
-                                vexpand
-                                onClicked={() => run(["systemctl", "poweroff"])}
-                            />
-                        </box>
+                    <box spacing={8} valign={Gtk.Align.CENTER}>
+                        <IconBtn
+                            class="dash-power-btn dash-power-lock"
+                            tooltip="Lock"
+                            icon=""
+                            onClicked={() => script("lock.sh")}
+                        />
+                        <IconBtn
+                            class="dash-power-btn dash-power-sleep"
+                            tooltip="Sleep"
+                            icon="󰒲"
+                            onClicked={() => run(["systemctl", "suspend"])}
+                        />
+                        <IconBtn
+                            class="dash-power-btn dash-power-reboot"
+                            tooltip="Reboot"
+                            icon="󰜉"
+                            onClicked={() => run(["systemctl", "reboot"])}
+                        />
+                        <IconBtn
+                            class="dash-power-btn dash-power-off"
+                            tooltip="Shut down"
+                            icon="󰐥"
+                            onClicked={() => run(["systemctl", "poweroff"])}
+                        />
                     </box>
                 </box>
 
@@ -372,7 +269,7 @@ export function ControlCenter() {
                                     onClicked={() => script("bluetuith.sh")}
                                 />
                                 <IconBtn
-                                    class="quick-tile"
+                                    class={idle((on) => (on ? "quick-tile quick-tile-on" : "quick-tile"))}
                                     tooltip="Idle lock"
                                     icon={idle((on) => (on ? "" : ""))}
                                     hexpand
@@ -490,25 +387,22 @@ export function ControlCenter() {
                         <box
                             cssClasses={["resources"]}
                             orientation={Gtk.Orientation.VERTICAL}
-                            spacing={8}
+                            spacing={14}
                             hexpand
                             vexpand
+                            valign={Gtk.Align.CENTER}
                         >
-                            <Meter name="CPU" value={cpu} unit="%" tooltip={cpu((v) => `CPU usage: ${v}%`)} />
                             <Meter
                                 name="TEMP"
                                 value={temp}
                                 unit="°"
                                 tooltip={temp((v) => `CPU temperature: ${v}°C`)}
                             />
-                            <Meter name="MEM" value={memory} unit="%" tooltip={memoryDetail} />
-                            <Meter name="DSK" value={disk} unit="%" tooltip={diskDetail} />
                             <Meter name="HOME" value={home} unit="%" tooltip={homeDetail} />
                             <Meter name="BAT" value={battery} unit="%" tooltip={timeLeft} />
                         </box>
                     </box>
                 </box>
-                <Calendar />
             </box>
         </window>
     )

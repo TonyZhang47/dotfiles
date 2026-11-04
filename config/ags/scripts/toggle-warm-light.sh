@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Super+C warm-light tile via hyprsunset (Hyprland CTM, not gammastep).
+# Super+R warm light via hyprsunset (Hyprland CTM, not gammastep).
 STATE="$HOME/.config/hypr/warm-light"
 LOCK="${XDG_RUNTIME_DIR:-/tmp}/warm-light.lock"
 export PATH="$HOME/.local/bin:$PATH"

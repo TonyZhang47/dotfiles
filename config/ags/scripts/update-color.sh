@@ -103,7 +103,8 @@ fi
 
 "$HOME/.config/ags/scripts/notify.sh" Wallpaper "Wallpaper" "$NOTIFY_NAME" "$STILL"
 
-for SOCKET in /tmp/kitty-*; do
+# listen_on is unix:/tmp/kitty. Older windows also use /tmp/kitty-<pid>.
+for SOCKET in /tmp/kitty /tmp/kitty-*; do
     if [ -S "$SOCKET" ]; then
         run_if_exists kitty @ --to "unix:$SOCKET" set-colors -a -c ~/.config/kitty/kitty-colors.conf
     fi

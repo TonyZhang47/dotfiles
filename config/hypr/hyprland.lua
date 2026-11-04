@@ -78,7 +78,7 @@ hl.exec_cmd("setsid -f /home/ping/.config/ags/scripts/restore-warm-light.sh >/de
 
 hl.exec_cmd("/home/ping/.config/ags/scripts/on-power-source.sh")
 hl.exec_cmd("pgrep -f '/ags/scripts/watch-wallpapers.sh' >/dev/null || setsid -f /home/ping/.config/ags/scripts/watch-wallpapers.sh >/dev/null 2>&1")
-hl.exec_cmd("pgrep -f '/hypr/scripts/clip-history.py watch' >/dev/null || setsid -f /home/ping/.config/hypr/scripts/clip-history.py watch >/dev/null 2>&1")
+hl.exec_cmd("systemctl --user start clip-history.service")
 end)
 
 
@@ -261,7 +261,9 @@ hl.config({
         kb_rules   = "",
 repeat_rate = 25,
 repeat_delay = 300,
-        follow_mouse = 1,
+        -- 2 keeps hover and click apart. The window under the cursor gets
+        -- pointer focus, and a click is what gives it keyboard focus.
+        follow_mouse = 2,
 
         sensitivity = 1.0, -- -1.0 to 1.0. 0 leaves the speed alone.
         accel_profile = "flat",
@@ -333,11 +335,15 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- Wallpaper picker: live GIFs plus static stills.
 hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle.sh wallpaper"))
 
--- Show or hide the right-side control center.
-hl.bind("SUPER + C", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle.sh control-center"))
+-- Idle lock: dim, lock, and sleep after idle. The sleep-only helper stays either way.
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle-idle.sh"))
+
+-- Warm light (hyprsunset).
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/toggle-warm-light.sh"))
 
 -- Clipboard history. Super+V is still focus-down.
-hl.bind("SUPER + CTRL + V", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/clip-history.py pick"))
+-- Super+Ctrl is the clock hold, so this stays on Alt.
+hl.bind("SUPER + ALT + V", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/clip-history.py pick"))
 
 -- Move focus with Super + M/Z/W/V. Super+arrows stay for in-app history.
 hl.bind(mainMod .. " + M",  hl.dsp.focus({ direction = "left" }))
@@ -357,8 +363,8 @@ hl.bind(mainMod .. " + right", hl.dsp.send_shortcut({ mods = "ALT", key = "right
 hl.bind(mainMod .. " + up",    hl.dsp.send_shortcut({ mods = "ALT", key = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.send_shortcut({ mods = "ALT", key = "down" }))
 
--- GTK Inspector for AGS (Super+C overlay). Overlay does not take keys,
--- so this opens it through the AGS CLI instead of Ctrl+Shift+I.
+-- GTK Inspector for AGS. Overlays do not take keys, so this opens it
+-- through the AGS CLI instead of Ctrl+Shift+I.
 hl.bind(secondMod .. " + I", hl.dsp.exec_cmd("/home/ping/.local/bin/ags inspect"))
 
 
@@ -385,6 +391,32 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = "special:mag
 
 -- Lock the session
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("/home/ping/.config/ags/scripts/lock.sh"))
+
+-- Hold Super and Ctrl (either side, any order) to lift the top-right
+-- clock above the front window. Releasing either key puts it back.
+local clockRaised = false
+local clockHeld = {}
+local clockSuper = { [133] = true, [134] = true } -- Super_L, Super_R
+local clockCtrl = { [37] = true, [105] = true } -- Control_L, Control_R
+
+local function syncClockLayer()
+    local super, ctrl = false, false
+    for code, down in pairs(clockHeld) do
+        if down and clockSuper[code] then super = true end
+        if down and clockCtrl[code] then ctrl = true end
+    end
+    local want = super and ctrl
+    if want == clockRaised then return end
+    clockRaised = want
+    local arg = want and "clock-raise" or "clock-lower"
+    hl.dispatch(hl.dsp.exec_cmd("/home/ping/.local/bin/ags request " .. arg))
+end
+
+hl.on("input.keyboard.key", function(keycode, _time, state)
+    if not clockSuper[keycode] and not clockCtrl[keycode] then return end
+    clockHeld[keycode] = state ~= 0
+    syncClockLayer()
+end)
 
 -- Alt+Tab: Windows tap — last two windows on this desktop.
 -- Super+Tab: Windows Task View — every window on every desktop.

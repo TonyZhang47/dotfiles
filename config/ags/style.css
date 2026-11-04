@@ -14,8 +14,8 @@ box.music-widget,
 box.resources,
 box.calendar-container,
 box.window {
-  background-color: #2e2f3f;
-  color: #ccc9ce;
+  background-color: #0e1115;
+  color: #a1a9b8;
   opacity: 1;
 }
 
@@ -40,8 +40,8 @@ box.window {
 }
 
 .dash-card {
-  background-color: #2e2f3f;
-  color: #ccc9ce;
+  background-color: #0e1115;
+  color: #a1a9b8;
   border-radius: 16px;
   padding: 14px 16px;
 }
@@ -52,39 +52,43 @@ box.window {
   min-height: 148px;
 }
 
+.dash-top {
+  padding: 10px 12px;
+}
+
 .dash-weather {
   min-width: 210px;
 }
 
 .dash-clock-time {
   font-size: 32px;
-  color: #ccc9ce;
+  color: #a1a9b8;
   font-weight: 700;
 }
 
 .dash-clock-day {
   font-size: 14px;
-  color: #bcb6bf;
+  color: #8b9ab3;
   margin-top: 2px;
 }
 
 .dash-clock-date {
   font-size: 12px;
-  color: #bcb6bf;
+  color: #8b9ab3;
 }
 
 .dash-uptime-inline {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .dash-uptime-icon {
   font-size: 28px;
-  color: #c3bec6;
+  color: #93a1b8;
 }
 
 .dash-uptime-h {
-  font-size: 14px;
-  color: #c3bec6;
+  font-size: 16px;
+  color: #93a1b8;
 }
 
 .dash-power {
@@ -98,28 +102,28 @@ box.window {
   padding: 0;
   margin: 0;
   border-radius: 14px;
-  background-color: rgb(21.6862745098%, 22.1960784314%, 29.6470588235%);
-  color: #ccc9ce;
+  background-color: rgb(9.9607843137%, 12.0784313725%, 14.8235294118%);
+  color: #a1a9b8;
 }
 
 .dash-power-lock {
-  color: #ccc9ce;
+  color: #a1a9b8;
 }
 
 .dash-power-sleep {
-  color: #c3bec6;
+  color: #93a1b8;
 }
 
 .dash-power-reboot {
-  color: #bcb6bf;
+  color: #8b9ab3;
 }
 
 .dash-power-off {
-  color: #ccc9ce;
+  color: #a1a9b8;
 }
 
 .dash-power-btn:hover {
-  background-color: rgb(41.5098039216%, 40.4901960784%, 46.0588235294%);
+  background-color: rgb(26.3137254902%, 29.6078431373%, 35.2352941176%);
 }
 
 .dash-weather-icon {
@@ -128,24 +132,24 @@ box.window {
 
 .dash-weather-temp {
   font-size: 30px;
-  color: #c3bec6;
+  color: #93a1b8;
   font-weight: 700;
 }
 
 .dash-weather-city {
   font-size: 13px;
-  color: #c3bec6;
+  color: #93a1b8;
   margin-top: 4px;
 }
 
 .dash-weather-text {
   font-size: 13px;
-  color: #bcb6bf;
+  color: #8b9ab3;
 }
 
 .dash-weather-c {
   font-size: 11px;
-  color: #bcb6bf;
+  color: #8b9ab3;
   margin-top: 2px;
 }
 
@@ -158,39 +162,39 @@ box.window {
   min-height: 32px;
   padding: 0;
   border-radius: 8px;
-  color: #bcb6bf;
+  color: #8b9ab3;
   background-color: transparent;
 }
 
 .dash-ws.empty {
-  color: #b3acb8;
+  color: #8493ae;
 }
 
 .dash-ws.occupied {
-  color: #bcb6bf;
+  color: #8b9ab3;
 }
 
 .dash-ws:hover {
-  color: #c3bec6;
-  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
+  color: #93a1b8;
+  background-color: rgb(7.7254901961%, 9.4901960784%, 11.6470588235%);
 }
 
 .dash-ws.active {
-  background-color: #ccc9ce;
-  color: #2e2f3f;
+  background-color: #a1a9b8;
+  color: #0e1115;
   font-weight: 700;
 }
 
 .dash-folder {
   padding: 3px 4px;
   border-radius: 6px;
-  color: #bcb6bf;
+  color: #8b9ab3;
   font-size: 13px;
 }
 
 .dash-folder:hover {
-  color: #ccc9ce;
-  background-color: rgb(19.2941176471%, 19.6862745098%, 26.3529411765%);
+  color: #a1a9b8;
+  background-color: rgb(6.9803921569%, 8.5490196078%, 10.5098039216%);
 }
 
 .dash-mid-col {
@@ -198,7 +202,7 @@ box.window {
 }
 
 .controls {
-  background-color: #2e2f3f;
+  background-color: #0e1115;
   padding: 14px 16px;
   border-radius: 16px;
 }
@@ -213,19 +217,19 @@ box.window {
   padding: 0;
   border-radius: 10px;
   font-size: 16px;
-  color: #c3bec6;
-  background-color: rgb(18.7921568627%, 19.1843137255%, 25.6941176471%);
+  color: #93a1b8;
+  background-color: rgb(6.3843137255%, 7.7960784314%, 9.6%);
 }
 
 .slider-icon:hover {
-  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
+  background-color: rgb(7.7254901961%, 9.4901960784%, 11.6470588235%);
 }
 
 .slider-bar trough,
 .brightness-control-bar trough,
 .volume-control-bar trough,
 .musicbar-widget trough {
-  background-color: rgb(31.6705882353%, 31.7176470588%, 37.0431372549%);
+  background-color: rgb(18.1725490196%, 19.7803921569%, 22.2980392157%);
   border-radius: 6px;
   min-height: 8px;
   min-width: 80px;
@@ -237,7 +241,7 @@ box.window {
 .volume-control-bar highlight,
 .musicbar-widget highlight {
   min-height: 8px;
-  background-color: rgb(74.3529411765%, 72.1176470588%, 75.4901960784%);
+  background-color: rgb(55.3725490196%, 60.9803921569%, 70.3921568627%);
   border-radius: 6px;
 }
 
@@ -246,7 +250,7 @@ box.window {
 }
 
 .musicbar-widget highlight {
-  background-color: rgb(76.8235294118%, 74.9411764706%, 77.9607843137%);
+  background-color: rgb(58.1960784314%, 63.4509803922%, 72.1568627451%);
 }
 
 .quick-tile {
@@ -255,40 +259,40 @@ box.window {
   padding: 0;
   border-radius: 10px;
   font-size: 16px;
-  color: #c3bec6;
-  background-color: rgb(18.7921568627%, 19.1843137255%, 25.6941176471%);
+  color: #93a1b8;
+  background-color: rgb(6.3843137255%, 7.7960784314%, 9.6%);
 }
 
 .quick-tile-on {
-  background-color: rgb(34.7450980392%, 34.3137254902%, 39.7647058824%);
+  background-color: rgb(20.1960784314%, 22.7843137255%, 26.8235294118%);
 }
 
 .quick-tile:hover {
-  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
+  background-color: rgb(7.7254901961%, 9.4901960784%, 11.6470588235%);
 }
 
 .music-widget {
   padding: 14px 16px;
   border-radius: 16px;
-  background-color: #2e2f3f;
-  color: #ccc9ce;
+  background-color: #0e1115;
+  color: #a1a9b8;
 }
 
 .music-title {
   font-size: 14px;
-  color: #ccc9ce;
+  color: #a1a9b8;
 }
 
 .artist-widget {
   font-size: 12px;
-  color: #bcb6bf;
+  color: #8b9ab3;
   min-height: 14px;
 }
 
 .song-cover-art-widget {
   background-size: cover;
   background-position: center;
-  background-color: rgb(19.168627451%, 19.5607843137%, 26.1882352941%);
+  background-color: rgb(6.831372549%, 8.3607843137%, 10.2823529412%);
   min-height: 72px;
   min-width: 72px;
   margin: 0 14px 0 0;
@@ -297,7 +301,7 @@ box.window {
 
 .song-cover-glyph {
   font-size: 22px;
-  color: #bcb6bf;
+  color: #8b9ab3;
 }
 
 .prev-widget,
@@ -307,35 +311,35 @@ box.window {
   min-width: 24px;
   min-height: 22px;
   padding: 0;
-  color: #c3bec6;
+  color: #93a1b8;
 }
 
 .prev-widget:hover,
 .pause-widget:hover,
 .next-widget:hover {
-  color: #ccc9ce;
+  color: #a1a9b8;
 }
 
 .resources {
-  background-color: #2e2f3f;
+  background-color: #0e1115;
   padding: 14px 16px;
   border-radius: 16px;
 }
 
 .meter {
-  min-height: 18px;
+  min-height: 28px;
 }
 
 .meter-name {
   min-width: 48px;
   font-size: 12px;
-  color: #bcb6bf;
+  color: #8b9ab3;
 }
 
 .meter-val {
   min-width: 40px;
   font-size: 12px;
-  color: #c3bec6;
+  color: #93a1b8;
 }
 
 .meter-bar {
@@ -350,7 +354,7 @@ box.window {
   margin: 0;
   padding: 0;
   border-radius: 6px;
-  background-color: rgb(36.6274509804%, 36.5490196078%, 41.5294117647%);
+  background-color: rgb(22.7843137255%, 24.5490196078%, 27.4117647059%);
 }
 
 .meter-bar progress {
@@ -360,44 +364,44 @@ box.window {
 }
 
 .meter-CPU progress {
-  background-color: #b3acb8;
+  background-color: #8493ae;
 }
 
 .meter-TEMP progress {
-  background-color: #ccc9ce;
+  background-color: #a1a9b8;
 }
 
 .meter-MEM progress {
-  background-color: rgb(76.8235294118%, 74.9411764706%, 77.9607843137%);
+  background-color: rgb(58.1960784314%, 63.4509803922%, 72.1568627451%);
 }
 
 .meter-DSK progress {
-  background-color: #c3bec6;
+  background-color: #93a1b8;
 }
 
 .meter-HOME progress {
-  background-color: #b3acb8;
+  background-color: #8493ae;
 }
 
 .meter-BAT progress {
-  background-color: #bcb6bf;
+  background-color: #8b9ab3;
 }
 
 .calendar-container {
   padding: 12px;
   border-radius: 14px;
-  background-color: #2e2f3f;
-  color: #ccc9ce;
+  background-color: #0e1115;
+  color: #a1a9b8;
 }
 
 .calendar-title {
   font-size: 20px;
   font-weight: bold;
-  color: #c3bec6;
+  color: #93a1b8;
 }
 
 .weekdays label {
-  color: #bcb6bf;
+  color: #8b9ab3;
 }
 
 .calendar-grid .day {
@@ -406,15 +410,83 @@ box.window {
 }
 
 .calendar-grid .today {
-  color: #2e2f3f;
-  background-color: #c3bec6;
+  color: #0e1115;
+  background-color: #93a1b8;
   border-radius: 6px;
   font-weight: bold;
   padding: 2px;
 }
 
+.desk-cal,
+.desk-info,
+.desk-clock,
+.desk-user {
+  background-color: transparent;
+}
+
+.desk-day,
+.desk-date-num,
+.desk-date-text,
+.desk-user,
+.desk-clock,
+.desk-temp,
+.desk-muted,
+.desk-stat {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+.desk-day {
+  font-size: 22px;
+  font-weight: 600;
+  min-height: 26px;
+  color: #a1a9b8;
+}
+
+.desk-date-num {
+  font-size: 52px;
+  font-weight: 500;
+  color: #a1a9b8;
+}
+
+.desk-date-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #a1a9b8;
+}
+
+.desk-user {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8b9ab3;
+}
+
+.desk-clock {
+  font-size: 68px;
+  font-weight: 500;
+  color: #a1a9b8;
+  margin-top: -6px;
+}
+
+.desk-temp {
+  font-size: 42px;
+  font-weight: 500;
+  color: #a1a9b8;
+}
+
+.desk-muted {
+  font-size: 20px;
+  font-weight: 500;
+  color: #8b9ab3;
+}
+
+.desk-stat {
+  font-size: 20px;
+  font-weight: 600;
+  color: #a1a9b8;
+}
+
 .window {
-  background-color: #2e2f3f;
+  background-color: #0e1115;
   padding: 8px;
   border-radius: 12px;
 }
@@ -433,7 +505,7 @@ box.window {
 
 .wp-section-title {
   font-size: 13px;
-  color: #c3bec6;
+  color: #93a1b8;
 }
 
 .image-container {
@@ -443,7 +515,7 @@ box.window {
 }
 
 .image-container:hover {
-  background-color: rgb(19.9215686275%, 20.3137254902%, 27.1764705882%);
+  background-color: rgb(7.7254901961%, 9.4901960784%, 11.6470588235%);
 }
 
 /*# sourceMappingURL=style.css.map */

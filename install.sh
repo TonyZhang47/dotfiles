@@ -292,6 +292,8 @@ rewrite_home() {
     "$HOME/.local/bin/spotify"
     "$HOME/.config/systemd/user/hyprsunset.service"
     "$HOME/.config/systemd/user/wallpaper-watch.service"
+    "$HOME/.config/systemd/user/clip-history.service"
+    "$HOME/.config/systemd/user/release-drm-on-shutdown.service"
     "$HOME/.config/mozilla/native-messaging-hosts/rice_theme.json"
     "$HOME/.mozilla/native-messaging-hosts/rice_theme.json"
   )
@@ -327,10 +329,10 @@ tune_hyprland() {
 enable_user_services() {
   log "User services"
   systemctl --user daemon-reload || true
-  systemctl --user enable wallpaper-watch.service hyprsunset.service || true
+  systemctl --user enable wallpaper-watch.service hyprsunset.service clip-history.service release-drm-on-shutdown.service || true
   systemctl --user enable pipewire.service pipewire-pulse.service wireplumber.service || true
   systemctl --user enable hyprpolkitagent.service || true
-  systemctl --user start wallpaper-watch.service hyprsunset.service \
+  systemctl --user start wallpaper-watch.service hyprsunset.service clip-history.service release-drm-on-shutdown.service \
     pipewire.service pipewire-pulse.service wireplumber.service \
     hyprpolkitagent.service || echo "User services are enabled. They start with the graphical session."
 }
@@ -366,7 +368,8 @@ Run fish, or change it with:  chsh -s /usr/bin/fish
 
 Super+comma opens Kitty. Super+E opens Nemo. Super+Space opens Rofi.
 Super+Shift+T picks a wallpaper. Wallpapers live in ~/.config/wallpapers.
-Super+C is the control center. Super+L locks.
+Super+C toggles the idle lock. Super+R toggles warm light. Super+L locks.
+Hold Super and Ctrl to raise the clock. Super+Alt+V opens clipboard history.
 
 The binds are written for Dvorak unless you switched the layout during install.
 EOF

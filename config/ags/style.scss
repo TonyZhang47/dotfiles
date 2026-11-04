@@ -54,6 +54,10 @@ box.window {
   min-height: 148px;
 }
 
+.dash-top {
+  padding: 10px 12px;
+}
+
 .dash-weather {
   min-width: 210px;
 }
@@ -76,7 +80,7 @@ box.window {
 }
 
 .dash-uptime-inline {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .dash-uptime-icon {
@@ -85,7 +89,7 @@ box.window {
 }
 
 .dash-uptime-h {
-  font-size: 14px;
+  font-size: 16px;
   color: $color6;
 }
 
@@ -314,7 +318,7 @@ box.window {
 }
 
 .meter {
-  min-height: 18px;
+  min-height: 28px;
 }
 
 .meter-name {
@@ -402,6 +406,74 @@ box.window {
   border-radius: 6px;
   font-weight: bold;
   padding: 2px;
+}
+
+.desk-cal,
+.desk-info,
+.desk-clock,
+.desk-user {
+  background-color: transparent;
+}
+
+.desk-day,
+.desk-date-num,
+.desk-date-text,
+.desk-user,
+.desk-clock,
+.desk-temp,
+.desk-muted,
+.desk-stat {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+.desk-day {
+  font-size: 22px;
+  font-weight: 600;
+  min-height: 26px;
+  color: $foreground;
+}
+
+.desk-date-num {
+  font-size: 52px;
+  font-weight: 500;
+  color: $foreground;
+}
+
+.desk-date-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: $foreground;
+}
+
+.desk-user {
+  font-size: 12px;
+  font-weight: 500;
+  color: $color5;
+}
+
+.desk-clock {
+  font-size: 68px;
+  font-weight: 500;
+  color: $foreground;
+  margin-top: -6px;
+}
+
+.desk-temp {
+  font-size: 42px;
+  font-weight: 500;
+  color: $foreground;
+}
+
+.desk-muted {
+  font-size: 20px;
+  font-weight: 500;
+  color: $color5;
+}
+
+.desk-stat {
+  font-size: 20px;
+  font-weight: 600;
+  color: $foreground;
 }
 
 .window {

@@ -40,7 +40,7 @@ An optional prompt can install a CPU-boost-off tweak written for an ASUS laptop.
 * Enables Bluetooth.
 * Copies `config/` to `~/.config/`, the GTK 2 theme file to `~/.gtkrc-2.0`, `local-bin/` to `~/.local/bin`, and the Comfortaa lock-screen font to `~/.local/share/fonts`.
 * Rewrites the author's home path (`/home/ping`) to your home directory.
-* Enables the user services for wallpaper previews, hyprsunset, PipeWire, and the Hyprland polkit agent.
+* Enables the user services for wallpaper previews, hyprsunset, clipboard history, the shutdown handoff, PipeWire, and the Hyprland polkit agent.
 
 Spotify's login and editor, browser, and git profiles are not in this repo. A full install can set up the wallpaper-colored Spicetify theme after the Spotify package is installed. Log into Spotify yourself.
 
@@ -49,7 +49,7 @@ Spotify's login and editor, browser, and git profiles are not in this repo. A fu
 | Piece | Choice |
 | --- | --- |
 | Window manager | Hyprland, configured in Lua. Dwindle layout, blur, gaps, rounded corners |
-| Overlays | AGS: control center and wallpaper picker |
+| Desktop | AGS clock, calendar, and stats. Hold Super and Ctrl to raise the clock |
 | Terminal | Kitty, JetBrainsMono Nerd Font |
 | Launcher | Rofi |
 | Files | Nemo (`Super+E`). Thunar config is included as well |
@@ -119,12 +119,14 @@ Dvorak is the layout these letters assume. If the installer switched you to QWER
 | `Super+semicolon` | Notion calendar in Firefox |
 | `Super+Space` | Rofi app launcher |
 | `Super+Shift+Space` | Rofi run |
-| `Super+C` | Control center |
+| `Super+C` | Toggle idle lock |
+| `Super+R` | Toggle warm light |
 | `Super+Shift+T` | Wallpaper picker |
 | `Super+L` | Lock |
 | `Super+S` | Screenshot region to the clipboard |
 | `Super+Shift+S` | Screenshot region saved to `~/Pictures/Screenshots` |
-| `Super+Ctrl+V` | Clipboard history |
+| `Super+Alt+V` | Clipboard history |
+| `Super+Ctrl`, held | Raise the clock above windows |
 | `Super+apostrophe` | Close window |
 | `Super+Shift+apostrophe` | Exit Hyprland |
 | `Super+X` | Float |
@@ -152,7 +154,7 @@ Hyprland/
 │   ├── matugen/            # wallpaper color templates
 │   ├── kitty/ rofi/ mako/  # programs themed from the wallpaper
 │   ├── wallpapers/         # pictures the picker shows
-│   └── systemd/user/       # wallpaper previews and hyprsunset
+│   └── systemd/user/       # wallpaper previews, hyprsunset, clipboard, shutdown
 ├── home/.gtkrc-2.0         # GTK 2 theme
 ├── local-bin/              # ags wrapper, Spotify launcher, hyprsunset
 ├── local-share/fonts/      # Comfortaa, used on the lock screen

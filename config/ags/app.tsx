@@ -5,6 +5,7 @@ import { exec } from "ags/process"
 import { monitorFile, readFile, writeFile } from "ags/file"
 import { CONFIG } from "./lib"
 import { ControlCenter } from "./widget/control-center"
+import { Desktop, setClockRaised } from "./widget/desktop"
 import { Wallpaper } from "./widget/wallpaper"
 
 const WINDOWS = ["control-center", "wallpaper"] as const
@@ -54,8 +55,12 @@ function applyToggleFile() {
 app.start({
     css: `${CONFIG}/style.css`,
     requestHandler(argv, res) {
-        const name = argv.find((a) => WINDOWS.includes(a as (typeof WINDOWS)[number]))
-        if (name) toggleNamed(name)
+        if (argv.includes("clock-raise")) setClockRaised(true)
+        else if (argv.includes("clock-lower")) setClockRaised(false)
+        else {
+            const name = argv.find((a) => WINDOWS.includes(a as (typeof WINDOWS)[number]))
+            if (name) toggleNamed(name)
+        }
         res("ok")
     },
     main() {
@@ -63,6 +68,7 @@ app.start({
         monitorFile(`${CONFIG}/colors.scss`, () => compileCss())
         ControlCenter()
         Wallpaper()
+        Desktop()
         try {
             writeFile(TOGGLE, ".\n")
         } catch {
@@ -79,7 +85,7 @@ app.start({
         try {
             writeFile(READY, "1")
         } catch {
-            // Super+C waits for this file
+            // toggle.sh waits for this file
         }
     },
 })

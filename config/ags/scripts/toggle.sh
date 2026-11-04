@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Super+C / Super+H / Super+Shift+T.
+# Super+Shift+T wallpaper picker.
 # Tell AGS via a runtime file. Never call `ags list` / `ags toggle` — those hang.
 set -u
 WIN="${1:?window name}"

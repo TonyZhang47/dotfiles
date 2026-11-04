@@ -1,2 +1,2 @@
 # Wallpaper colors for fzf / eza. Sourced from rice.zsh.
-export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:+$FZF_DEFAULT_OPTS }--color=bg:#2e2f3f,fg:#ccc9ce,hl:#c3bec6,bg+:#3e3f54,fg+:#ccc9ce,hl+:#ccc9ce,info:#b3acb8,prompt:#c3bec6,pointer:#ccc9ce,marker:#c3bec6,spinner:#c3bec6,header:#b3acb8,border:#4d4f69"
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:+$FZF_DEFAULT_OPTS }--color=bg:#0e1115,fg:#a1a9b8,hl:#93a1b8,bg+:#212932,fg+:#a1a9b8,hl+:#a1a9b8,info:#8493ae,prompt:#93a1b8,pointer:#a1a9b8,marker:#93a1b8,spinner:#93a1b8,header:#8493ae,border:#343f4d"

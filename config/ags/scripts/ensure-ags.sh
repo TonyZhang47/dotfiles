@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Login starter. Super+C uses toggle.sh and must not wait here.
+# Login starter. toggle.sh must not wait here.
 set -u
 AGS="$HOME/.local/bin/ags"
 APP="$HOME/.config/ags/app.tsx"

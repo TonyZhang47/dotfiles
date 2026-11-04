@@ -10,9 +10,9 @@ end
 set -g fish_greeting ""
 
 # --- Syntax Highlighting ---
-# These name kitty's ANSI slots, which follow the wallpaper. Yellow, blue, and
-# magenta are light enough for the dark prompt text. Bright black is the muted
-# text color. Quotes use yellow so a commit message cannot blend into the background.
+# These name kitty's ANSI slots, which are rewritten from the wallpaper.
+# Bright black is the muted wallpaper tone. Quotes stay yellow so a commit
+# message cannot blend into the background.
 set -g fish_color_normal normal
 set -g fish_color_command white --bold
 set -g fish_color_param cyan
@@ -26,54 +26,46 @@ set -g fish_color_comment brblack
 set -g fish_color_autosuggestion brblack
 set -g fish_color_selection white --background=brblack
 set -g fish_color_search_match black --background=green
-# Invalid input stays red in every theme so it cannot blend in.
-set -g fish_color_error f7768e
+set -g fish_color_error red
 
 # --- Prompt ---
-# Recreates the Oh-My-Posh "viet" prompt from ViegPhunt's Dotfiles, in fish, so
-# it follows the wallpaper palette instead of a hardcoded Catppuccin mocha.
-# Pokemon-colorscripts on startup is intentionally omitted.
+# Foreground and the muted wallpaper tone, the same pair the desktop uses.
 function fish_prompt
     set -l git_branch (command git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
     set_color white
     echo -n "╭─ "
 
-    # Username pill
-    set_color -b yellow black
+    set_color -b white black
     echo -n " "(whoami)" "
-    set_color -b blue yellow
+    set_color -b brblack white
     echo -n ""
 
-    # Path pill
-    set_color -b blue black
+    set_color -b brblack black
     echo -n "   "(prompt_pwd)" "
 
     if test -n "$git_branch"
-        set_color -b magenta blue
+        set_color -b white brblack
         echo -n ""
-        set_color -b magenta black
+        set_color -b white black
         echo -n "  $git_branch "
         set_color normal
-        set_color magenta
+        set_color white
         echo -n ""
     else
-        set_color -b magenta blue
+        set_color -b white brblack
         echo -n ""
-        set_color -b magenta black
-        echo -n " ♥ "(date +'%H:%M')" "
+        set_color -b white black
+        echo -n " "(date +'%H:%M')" "
         set_color normal
-        set_color magenta
+        set_color white
         echo -n ""
     end
 
     echo
     set_color white
-    echo -n "╰─ "
-    set_color green
-    echo -n "❯"
+    echo -n "╰─ ❯ "
     set_color normal
-    echo -n " "
 end
 
 function fish_right_prompt
