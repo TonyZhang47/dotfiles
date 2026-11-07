@@ -40,7 +40,7 @@ An optional prompt can install a CPU-boost-off tweak written for an ASUS laptop.
 * Enables Bluetooth.
 * Copies `config/` to `~/.config/`, the GTK 2 theme file to `~/.gtkrc-2.0`, `local-bin/` to `~/.local/bin`, and the Comfortaa lock-screen font to `~/.local/share/fonts`.
 * Rewrites the author's home path (`/home/ping`) to your home directory.
-* Enables the user services for wallpaper previews, hyprsunset, clipboard history, the shutdown handoff, PipeWire, and the Hyprland polkit agent.
+* Enables the user services for wallpaper previews, hyprsunset, clipboard history, PipeWire, and the Hyprland polkit agent.
 
 Spotify's login and editor, browser, and git profiles are not in this repo. A full install can set up the wallpaper-colored Spicetify theme after the Spotify package is installed. Log into Spotify yourself.
 
@@ -154,7 +154,7 @@ Hyprland/
 │   ├── matugen/            # wallpaper color templates
 │   ├── kitty/ rofi/ mako/  # programs themed from the wallpaper
 │   ├── wallpapers/         # pictures the picker shows
-│   └── systemd/user/       # wallpaper previews, hyprsunset, clipboard, shutdown
+│   └── systemd/user/       # wallpaper previews, hyprsunset, clipboard
 ├── home/.gtkrc-2.0         # GTK 2 theme
 ├── local-bin/              # ags wrapper, Spotify launcher, hyprsunset
 ├── local-share/fonts/      # Comfortaa, used on the lock screen

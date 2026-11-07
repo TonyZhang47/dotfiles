@@ -415,65 +415,59 @@ box.window {
   background-color: transparent;
 }
 
-.desk-day,
-.desk-date-num,
-.desk-date-text,
-.desk-user,
-.desk-clock,
-.desk-temp,
-.desk-muted,
-.desk-stat {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
-}
-
 .desk-day {
   font-size: 22px;
   font-weight: 600;
   min-height: 26px;
-  color: $foreground;
+  color: $color7;
 }
 
 .desk-date-num {
   font-size: 52px;
-  font-weight: 500;
-  color: $foreground;
+  font-weight: 700;
+  color: $color7;
 }
 
 .desk-date-text {
   font-size: 18px;
-  font-weight: 500;
-  color: $foreground;
+  font-weight: 600;
+  color: $color13;
 }
 
 .desk-user {
-  font-size: 12px;
-  font-weight: 500;
-  color: $color5;
+  font-size: 13px;
+  font-weight: 600;
+  color: $color6;
 }
 
 .desk-clock {
   font-size: 68px;
-  font-weight: 500;
-  color: $foreground;
+  font-weight: 700;
+  color: $color7;
   margin-top: -6px;
 }
 
 .desk-temp {
   font-size: 42px;
-  font-weight: 500;
-  color: $foreground;
+  font-weight: 700;
+  color: $color7;
 }
 
 .desk-muted {
-  font-size: 20px;
-  font-weight: 500;
-  color: $color5;
+  font-size: 18px;
+  font-weight: 600;
+  color: $color6;
 }
 
 .desk-stat {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: $color7;
+}
+
+.desk-stat-name {
+  color: $color6;
   font-weight: 600;
-  color: $foreground;
 }
 
 .window {

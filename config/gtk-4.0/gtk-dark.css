@@ -1,1 +1,74 @@
-/usr/share/themes/adw-gtk3-dark/gtk-4.0/gtk-dark.css
+/* Wallpaper palette — loaded on top of adw-gtk3-dark. */
+@define-color accent_color #c3bec6;
+@define-color accent_bg_color #4d4f69;
+@define-color accent_fg_color #ccc9ce;
+@define-color destructive_color #e2b2ac;
+@define-color destructive_bg_color #e2b2ac;
+@define-color destructive_fg_color #2e2f3f;
+@define-color success_color #80d3a7;
+@define-color success_bg_color #80d3a7;
+@define-color success_fg_color #2e2f3f;
+@define-color warning_color #d1bc7b;
+@define-color warning_bg_color #d1bc7b;
+@define-color warning_fg_color #2e2f3f;
+@define-color error_color #e2b2ac;
+@define-color error_bg_color #e2b2ac;
+@define-color error_fg_color #2e2f3f;
+@define-color window_bg_color #2e2f3f;
+@define-color window_fg_color #ccc9ce;
+@define-color view_bg_color #3e3f54;
+@define-color view_fg_color #ccc9ce;
+@define-color headerbar_bg_color #2e2f3f;
+@define-color headerbar_fg_color #ccc9ce;
+@define-color headerbar_border_color #4d4f69;
+@define-color headerbar_backdrop_color #2e2f3f;
+@define-color sidebar_bg_color #2e2f3f;
+@define-color sidebar_fg_color #ccc9ce;
+@define-color sidebar_backdrop_color #2e2f3f;
+@define-color sidebar_shade_color #2e2f3f;
+@define-color secondary_sidebar_bg_color #3e3f54;
+@define-color card_bg_color #3e3f54;
+@define-color card_fg_color #ccc9ce;
+@define-color dialog_bg_color #3e3f54;
+@define-color dialog_fg_color #ccc9ce;
+@define-color popover_bg_color #3e3f54;
+@define-color popover_fg_color #ccc9ce;
+@define-color thumbnail_bg_color #3e3f54;
+@define-color thumbnail_fg_color #ccc9ce;
+@define-color shade_color rgba(0, 0, 0, 0.36);
+@define-color scrollbar_outline_color #2e2f3f;
+
+@define-color theme_bg_color #2e2f3f;
+@define-color theme_fg_color #ccc9ce;
+@define-color theme_base_color #3e3f54;
+@define-color theme_text_color #ccc9ce;
+@define-color theme_selected_bg_color #4d4f69;
+@define-color theme_selected_fg_color #ccc9ce;
+@define-color insensitive_bg_color #3e3f54;
+@define-color insensitive_fg_color #b3acb8;
+@define-color insensitive_base_color #3e3f54;
+@define-color theme_unfocused_bg_color #2e2f3f;
+@define-color theme_unfocused_fg_color #b3acb8;
+@define-color theme_unfocused_base_color #3e3f54;
+@define-color theme_unfocused_text_color #b3acb8;
+@define-color theme_unfocused_selected_bg_color #494b64;
+@define-color theme_unfocused_selected_fg_color #ccc9ce;
+@define-color borders #4d4f69;
+@define-color unfocused_borders #494b64;
+
+:root {
+  --accent-color: #c3bec6;
+  --accent-bg-color: #4d4f69;
+  --accent-fg-color: #ccc9ce;
+  --window-bg-color: #2e2f3f;
+  --window-fg-color: #ccc9ce;
+  --headerbar-bg-color: #2e2f3f;
+  --headerbar-fg-color: #ccc9ce;
+  --view-bg-color: #3e3f54;
+  --view-fg-color: #ccc9ce;
+  --sidebar-bg-color: #2e2f3f;
+  --sidebar-fg-color: #ccc9ce;
+  --card-bg-color: #3e3f54;
+  --popover-bg-color: #3e3f54;
+  --dialog-bg-color: #3e3f54;
+}

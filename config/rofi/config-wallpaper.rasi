@@ -9,7 +9,7 @@
 
 configuration {
     modi:                       "drun,run";
-    font:                       "Mononoki 16";
+    font:                       "Mononoki 14";
     show-icons:                 true;
     hover-select:               false;
     scroll-method:              1;
@@ -21,7 +21,7 @@ configuration {
 }
 
 window {
-    width:                        640px;
+    width:                        350px;
     x-offset:                     0px;
     y-offset:                     0px;
     spacing:                      0px;
@@ -56,7 +56,7 @@ listbox {
 
 listview {
     columns: 1;
-    lines: 8;
+    lines: 3;
     fixed-height: true;
     fixed-columns: true;
     cycle: false;

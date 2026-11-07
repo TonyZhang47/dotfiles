@@ -21,68 +21,68 @@ $character"""
 
 # --- Character / Prompt Symbol ---
 [character]
-success_symbol = "[❯](bold #7aa2f7)"
-error_symbol = "[❯](bold #f7768e)"
+success_symbol = "[❯](bold #e3a054)"
+error_symbol = "[❯](bold #e98276)"
 
 # --- Directory Module ---
 [directory]
-style = "bold #7dcfff"
+style = "bold #ca9460"
 truncation_length = 3
 truncate_to_repo = true
 read_only = " 󰌾"
-read_only_style = "bold #f7768e"
+read_only_style = "bold #e98276"
 
 # --- Git Modules ---
 [git_branch]
 symbol = " "
-style = "bold #bb9af7"
+style = "bold #b3c68b"
 format = "on [$symbol$branch]($style) "
 
 [git_status]
-style = "bold #f7768e"
+style = "bold #e98276"
 format = "[$all_status$ahead_behind]($style) "
 
 # --- Programming Runtimes / Tools (Tokyo Night Colors) ---
 [c]
 symbol = " "
-style = "bold #7aa2f7"
+style = "bold #e3a054"
 format = "[$symbol($version )]($style)"
 
 [cpp]
 symbol = " "
-style = "bold #7aa2f7"
+style = "bold #e3a054"
 format = "[$symbol($version )]($style)"
 
 [rust]
 symbol = "󱘗 "
-style = "bold #ff9e64"
+style = "bold #df913a"
 format = "[$symbol($version )]($style)"
 
 [golang]
 symbol = " "
-style = "bold #7dcfff"
+style = "bold #ca9460"
 format = "[$symbol($version )]($style)"
 
 [python]
 symbol = " "
-style = "bold #e0af68"
+style = "bold #e09541"
 format = "[$symbol($version )]($style)"
 
 [nodejs]
 symbol = " "
-style = "bold #9ece6a"
+style = "bold #a1b86f"
 format = "[$symbol($version )]($style)"
 
 [java]
 symbol = " "
-style = "bold #f7768e"
+style = "bold #e98276"
 format = "[$symbol($version )]($style)"
 
 # --- Command Execution Time ---
 [cmd_duration]
 min_time = 2_000
 format = "took [$duration]($style) "
-style = "bold #e0af68"
+style = "bold #e09541"
 
 # --- Language & Tool Icons ---
 [aws]

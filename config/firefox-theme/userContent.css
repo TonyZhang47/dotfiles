@@ -3,9 +3,9 @@
                url("about:privatebrowsing"),
                url("about:blank") {
   :root {
-    --newtab-background-color: #0e1115 !important;
-    --newtab-text-primary-color: #a1a9b8 !important;
-    --newtab-textbox-background-color: #212932 !important;
+    --newtab-background-color: #2e2f3f !important;
+    --newtab-text-primary-color: #ccc9ce !important;
+    --newtab-textbox-background-color: #3e3f54 !important;
   }
 
   html,
@@ -13,22 +13,22 @@
   .outer-wrapper,
   .search-wrapper,
   main {
-    background-color: #0e1115 !important;
-    color: #a1a9b8 !important;
+    background-color: #2e2f3f !important;
+    color: #ccc9ce !important;
   }
 
   .search-handoff-button,
   .search-inner-wrapper,
   input {
-    background-color: #212932 !important;
-    color: #a1a9b8 !important;
-    border-color: #343f4d !important;
+    background-color: #3e3f54 !important;
+    color: #ccc9ce !important;
+    border-color: #4d4f69 !important;
     border-radius: 12px !important;
   }
 
   .top-site-outer .tile,
   .top-site-inner {
-    background-color: #212932 !important;
+    background-color: #3e3f54 !important;
     border-radius: 12px !important;
     box-shadow: none !important;
   }
@@ -36,10 +36,10 @@
 
 @-moz-document url-prefix("about:") {
   :root {
-    --in-content-page-background: #0e1115 !important;
-    --in-content-page-color: #a1a9b8 !important;
-    --in-content-box-background: #212932 !important;
-    --in-content-box-border-color: #343f4d !important;
-    --in-content-primary-button-background: #2d3643 !important;
+    --in-content-page-background: #2e2f3f !important;
+    --in-content-page-color: #ccc9ce !important;
+    --in-content-box-background: #3e3f54 !important;
+    --in-content-box-border-color: #4d4f69 !important;
+    --in-content-primary-button-background: #494b64 !important;
   }
 }

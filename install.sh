@@ -293,7 +293,6 @@ rewrite_home() {
     "$HOME/.config/systemd/user/hyprsunset.service"
     "$HOME/.config/systemd/user/wallpaper-watch.service"
     "$HOME/.config/systemd/user/clip-history.service"
-    "$HOME/.config/systemd/user/release-drm-on-shutdown.service"
     "$HOME/.config/mozilla/native-messaging-hosts/rice_theme.json"
     "$HOME/.mozilla/native-messaging-hosts/rice_theme.json"
   )
@@ -329,10 +328,10 @@ tune_hyprland() {
 enable_user_services() {
   log "User services"
   systemctl --user daemon-reload || true
-  systemctl --user enable wallpaper-watch.service hyprsunset.service clip-history.service release-drm-on-shutdown.service || true
+  systemctl --user enable wallpaper-watch.service hyprsunset.service clip-history.service || true
   systemctl --user enable pipewire.service pipewire-pulse.service wireplumber.service || true
   systemctl --user enable hyprpolkitagent.service || true
-  systemctl --user start wallpaper-watch.service hyprsunset.service clip-history.service release-drm-on-shutdown.service \
+  systemctl --user start wallpaper-watch.service hyprsunset.service clip-history.service \
     pipewire.service pipewire-pulse.service wireplumber.service \
     hyprpolkitagent.service || echo "User services are enabled. They start with the graphical session."
 }

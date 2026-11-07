@@ -74,14 +74,14 @@ function revealAfterFullscreen() {
 }
 
 // Super+Ctrl hold. The clock lives under windows; lift it above them
-// until either modifier is released.
+// until either modifier is released. Change the layer in place. Hiding
+// the surface to retarget it plays the open animation, which flashes the clock.
+let clockRaised = false
 export function setClockRaised(raised: boolean) {
     const win = app.get_window("desk-clock")
-    if (!win) return
-    // Layer is applied when the surface maps. Hide, retarget, then show.
-    win.set_visible(false)
+    if (!win || raised === clockRaised) return
+    clockRaised = raised
     win.set_layer(raised ? Astal.Layer.OVERLAY : Astal.Layer.BOTTOM)
-    win.set_visible(true)
     if (!raised) revealAfterFullscreen()
 }
 

@@ -247,6 +247,14 @@ hl.config({
     },
 })
 
+-- Keep the point under the cursor when a tiled window is picked up.
+-- Centering it on the cursor makes the corner clock look like it jumps.
+hl.config({
+    binds = {
+        drag_center_window = false,
+    },
+})
+
 
 ---------------
 ---- INPUT ----
@@ -563,14 +571,6 @@ hl.window_rule({
     no_focus = true,
 })
 
-
--- Layer rules also return a handle.
--- local overlayLayerRule = hl.layer_rule({
---     name  = "no-anim-overlay",
---     match = { namespace = "^my-overlay$" },
---     no_anim = true,
--- })
--- overlayLayerRule:set_enabled(false)
 
 -- Hyprland-run windowrule
 hl.window_rule({

@@ -1,7 +1,7 @@
 [options]
-background = 0e1115
-overlay_text_color = a1a9b8
+background = 2e2f3f
+overlay_text_color = ccc9ce
 overlay_text_alpha = ee
-overlay_background_color = 0e1115
+overlay_background_color = 2e2f3f
 overlay_background_alpha = cc
 overlay_font = Iosevka Nerd Font:11
