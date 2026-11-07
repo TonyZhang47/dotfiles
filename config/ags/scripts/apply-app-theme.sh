@@ -78,19 +78,3 @@ if pgrep -x nemo >/dev/null 2>&1; then
     # shellcheck disable=SC2086
     setsid -f ${nemo_args:-nemo} >/dev/null 2>&1 || true
 fi
-
-if command -v spicetify >/dev/null 2>&1 && [ -x "$HOME/.local/opt/spotify/spotify" ]; then
-    # refresh rewrites the theme files and returns success without reloading
-    # the open client, so Spotify would keep the previous palette.
-    if ! spicetify refresh >/dev/null 2>&1; then
-        spicetify apply >/dev/null 2>&1 || true
-    fi
-    if pgrep -x spotify >/dev/null 2>&1; then
-        pkill -x spotify >/dev/null 2>&1 || true
-        for _ in 1 2 3 4 5 6 7 8 9 10 12 15; do
-            pgrep -x spotify >/dev/null 2>&1 || break
-            sleep 0.2
-        done
-        setsid -f "$HOME/.local/bin/spotify" >/dev/null 2>&1 || true
-    fi
-fi

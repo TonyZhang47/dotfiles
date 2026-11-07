@@ -40,7 +40,7 @@ hl.config({
 local terminal    = "kitty"
 local fileManager = "nemo"
 local browser = "firefox-developer-edition"
-local music = "/home/ping/.local/bin/spotify"
+local music = "spotify"
 local notion = "firefox-developer-edition https://calendar.notion.so/"
 
 local launcher        = "rofi -show drun -show-icons"

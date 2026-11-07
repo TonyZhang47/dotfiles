@@ -42,7 +42,7 @@ CONFIG_DIRS=(
   ags bottom btop cava easyeffects fastfetch firefox-theme fish fontconfig
   ghostty gtk-3.0 gtk-4.0 hypr imv kitty live-wallpapers mako matugen mpv
   nemo nmrs nvim nwg-displays nwg-look qt5ct qt6ct rice rofi rog satty
-  spicetify Thunar xfce4 xsettingsd yazi zsh
+  Thunar xfce4 xsettingsd yazi zsh
 )
 
 CONFIG_FILES=(
@@ -263,12 +263,11 @@ copy_configs() {
   cp -a "$ROOT/home/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
   mkdir -p "$HOME/.local/bin" "$HOME/.local/share/fonts"
   cp -a "$ROOT/local-bin/ags" "$HOME/.local/bin/ags"
-  cp -a "$ROOT/local-bin/spotify" "$HOME/.local/bin/spotify"
   cp -a "$ROOT/local-bin/hyprsunset" "$HOME/.local/bin/hyprsunset"
   cp -a "$ROOT/local-share/fonts/." "$HOME/.local/share/fonts/"
   rewrite_home
   tune_hyprland
-  chmod +x "$HOME/.local/bin/ags" "$HOME/.local/bin/spotify" "$HOME/.local/bin/hyprsunset"
+  chmod +x "$HOME/.local/bin/ags" "$HOME/.local/bin/hyprsunset"
   find "$HOME/.config/ags/scripts" "$HOME/.config/hypr/scripts" "$HOME/.config/rice" \
     -type f \( -name '*.sh' -o -name '*.py' \) -exec chmod +x {} +
   command -v fc-cache >/dev/null && fc-cache -f >/dev/null || true
@@ -289,7 +288,6 @@ rewrite_home() {
   paths+=(
     "$HOME/.gtkrc-2.0"
     "$HOME/.local/bin/ags"
-    "$HOME/.local/bin/spotify"
     "$HOME/.config/systemd/user/hyprsunset.service"
     "$HOME/.config/systemd/user/wallpaper-watch.service"
     "$HOME/.config/systemd/user/clip-history.service"
@@ -334,15 +332,6 @@ enable_user_services() {
   systemctl --user start wallpaper-watch.service hyprsunset.service clip-history.service \
     pipewire.service pipewire-pulse.service wireplumber.service \
     hyprpolkitagent.service || echo "User services are enabled. They start with the graphical session."
-}
-
-setup_spotify() {
-  [[ -x /opt/spotify/spotify ]] || return 0
-  [[ -x "$HOME/.config/ags/scripts/setup-spotify.sh" ]] || return 0
-  log "Spotify theme"
-  if confirm "Install the wallpaper-colored Spotify theme (Spicetify)?" y; then
-    "$HOME/.config/ags/scripts/setup-spotify.sh" || echo "Spotify theme setup did not finish. Run ~/.config/ags/scripts/setup-spotify.sh later."
-  fi
 }
 
 cpu_boost() {
@@ -394,7 +383,6 @@ case "$MODE" in
     install_packages
     if copy_configs; then
       enable_user_services
-      setup_spotify
       cpu_boost
       finish
     fi
@@ -402,7 +390,6 @@ case "$MODE" in
   configs)
     if copy_configs; then
       enable_user_services
-      setup_spotify
       finish
     fi
     ;;

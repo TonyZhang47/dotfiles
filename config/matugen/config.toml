@@ -50,10 +50,6 @@ output_path = '~/.config/firefox-theme/userChrome.css'
 input_path = '~/.config/matugen/templates/firefox-userContent.css'
 output_path = '~/.config/firefox-theme/userContent.css'
 
-[templates.spicetify]
-input_path = '~/.config/matugen/templates/spicetify-color.ini'
-output_path = '~/.config/spicetify/Themes/rice/color.ini'
-
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-3.0/gtk.css'

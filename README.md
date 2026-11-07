@@ -42,7 +42,7 @@ An optional prompt can install a CPU-boost-off tweak written for an ASUS laptop.
 * Rewrites the author's home path (`/home/ping`) to your home directory.
 * Enables the user services for wallpaper previews, hyprsunset, clipboard history, PipeWire, and the Hyprland polkit agent.
 
-Spotify's login and editor, browser, and git profiles are not in this repo. A full install can set up the wallpaper-colored Spicetify theme after the Spotify package is installed. Log into Spotify yourself.
+Spotify's login and editor, browser, and git profiles are not in this repo. Log into Spotify yourself.
 
 ## Desktop
 
@@ -56,13 +56,13 @@ Spotify's login and editor, browser, and git profiles are not in this repo. A fu
 | Notifications | Mako |
 | Lock screen | hyprlock, Comfortaa, cava bars |
 | Wallpaper | `awww`. Files live in `~/.config/wallpapers` |
-| Colors | matugen reads the wallpaper and recolors AGS, Kitty, Rofi, Mako, GTK, Qt, cava, btop, Neovim, Firefox, and Spotify |
+| Colors | matugen reads the wallpaper and recolors AGS, Kitty, Rofi, Mako, GTK, Qt, cava, btop, Neovim, and Firefox |
 | GTK | adw-gtk3-dark |
 | Cursor | Bibata Modern Ice |
 | Shell prompt | fish, with fastfetch on startup. The login shell is left unchanged |
 | Editor | Neovim. Movement is remapped for Dvorak (`n` down, `e` up, `i` right, `u` insert) |
 | Browser | Firefox Developer Edition |
-| Music | Spotify, recolored with the wallpaper |
+| Music | Spotify |
 
 Ghostty config is included. The terminal bind opens Kitty.
 
@@ -156,7 +156,7 @@ Hyprland/
 │   ├── wallpapers/         # pictures the picker shows
 │   └── systemd/user/       # wallpaper previews, hyprsunset, clipboard
 ├── home/.gtkrc-2.0         # GTK 2 theme
-├── local-bin/              # ags wrapper, Spotify launcher, hyprsunset
+├── local-bin/              # ags wrapper and hyprsunset
 ├── local-share/fonts/      # Comfortaa, used on the lock screen
 └── install.sh
 ```
